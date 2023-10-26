@@ -12,7 +12,20 @@ class User:
         self.threads = []
         self.userId = addUser(username, password, email)
         modreator = False
+    def login(username, password):
+        """
+        Login as a user.
 
+        :param username: The username of the user.
+        :param password: The password of the user.
+        :return: The User object if login was successful, None otherwise.
+        """
+        # Get the user from the database
+        user = getUser(username, password)
+        if user:
+            return user
+        else:
+            return None
     def remove_thread(self, thread, user_id=0):
         if user_id != 0 and not self.moderator:
             raise Exception("You are not a moderator and cannot remove threads")

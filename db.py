@@ -75,6 +75,8 @@ def addUser(username, password, email):
         return user_id 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+    except:
+        print("Sorry we can not register you now try again later")
 
 # Similar functions for addThread, addComment, getUser, getThread, getComment, getThreads, getComments
 
@@ -163,6 +165,18 @@ def get_all_categories():
         print(f"Error: {err}")
         return None
 
+def getUser(username,password):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "SELECT * FROM users WHERE username = %s AND password = %s"
+        cursor.execute(query, (username, password))
+        user = cursor.fetchone()
+        cursor.close()
+        return user
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
 
 if __name__ == "__main__":
     conn = connect_to_database()
