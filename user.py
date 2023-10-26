@@ -1,4 +1,4 @@
-from db import addUser , addComment , addThread , removeThread , removeComment
+from db import addUser , addComment , addThread , removeThread , removeComment , getUser
 class User:
     def __init__(self, username, password,email):
         """
