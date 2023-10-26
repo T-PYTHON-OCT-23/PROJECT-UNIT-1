@@ -1,9 +1,10 @@
 from db import getThreadsInCategory , get_all_categories
 
+def allCategories():
+    for i in get_all_categories():
+            print(i)
 
-def printAllThreads():
-    categories=get_all_categories()
-    for i in categories:
+def printAllThreads(i):
         threads = getThreadsInCategory(i)  # Replace with the category name you want to retrieve
         if threads:
             for thread in threads:
@@ -14,4 +15,6 @@ def printAllThreads():
 
 
 if __name__ == "__main__":
-    printAllThreads()
+    allCategories()
+    printAllThreads(input("Enter The name of what category you want to see its threads:"))
+    
