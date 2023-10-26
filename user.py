@@ -1,4 +1,4 @@
-from db import addUser , addComment , addThread
+from db import addUser , addComment , addThread , removeThread , removeComment
 class User:
     def __init__(self, username, password,email):
         """
@@ -11,7 +11,22 @@ class User:
         self.email = email
         self.threads = []
         self.userId = addUser(username, password, email)
-        
+        modreator = False
+
+    def remove_thread(self, thread, user_id=0):
+        if user_id != 0 and not self.moderator:
+            raise Exception("You are not a moderator and cannot remove threads")
+
+        if self.moderator or user_id == thread.author.user_id:
+            if thread in self.threads:
+                self.threads.remove(thread)
+                removeThread(thread.thread_id)
+            else:
+                raise Exception("Thread not found in the user's list of threads")
+        else:
+            raise Exception("You do not have permission to remove this thread")
+
+            
 
     def create_thread(self, title, content):
         """
@@ -53,6 +68,20 @@ class Thread:
         self.comments.append(comment)
         addComment(ThreadID,content,author)
         return comment
+    
+    def remove_comment(self, comment, user_id=0):
+        if user_id != 0 and not self.moderator:
+            raise Exception("You are not a moderator and cannot remove comments")
+
+        if self.moderator or user_id == comment.author.user_id:
+            if comment in self.comments:
+                self.comments.remove(comment)
+                removeComment(comment.comment_id)  # You should implement this function to remove the comment from the database
+            else:
+                raise Exception("Comment not found in the user's list of comments")
+        else:
+            raise Exception("You do not have permission to remove this comment")
+
 
 class Comment:
     def __init__(self, content, author):

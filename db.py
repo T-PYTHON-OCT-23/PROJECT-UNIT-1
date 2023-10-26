@@ -91,6 +91,31 @@ def addThread(title, content, user_id):
         return thread_id
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+        
+        
+
+def removeThread(thread_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "DELETE FROM threads WHERE thread_id = %s"
+        cursor.execute(query, (thread_id,))
+        conn.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        
+
+def removeComment(comment_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "DELETE FROM comments WHERE comment_id = %s"
+        cursor.execute(query, (comment_id,))
+        conn.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
 
 def addComment(theard_id, content, user_id):
     conn = connect_to_database()
