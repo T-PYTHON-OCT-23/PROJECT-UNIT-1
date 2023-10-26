@@ -68,11 +68,42 @@ def addUser(username, password, email):
         values = (username, password, email)
         cursor.execute(query, values)
         conn.commit()
+        # Get the user_id of the newly added user
+        user_id = cursor.lastrowid
         cursor.close()
+        return user_id 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
 
 # Similar functions for addThread, addComment, getUser, getThread, getComment, getThreads, getComments
+
+def addThread(title, content, user_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "INSERT INTO threads (title, content, user_id) VALUES (%s, %s, %s)"
+        values = (title, content, user_id)
+        cursor.execute(query, values)
+        conn.commit()
+        thread_id = cursor.lastrowid
+        cursor.close()
+        return thread_id
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+
+def addComment(theard_id, content, user_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "INSERT INTO comments (theard_id, content, user_id) VALUES (%s, %s, %s)"
+        values = (theard_id, content, user_id)
+        cursor.execute(query, values)
+        conn.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+
+
 
 if __name__ == "__main__":
     conn = connect_to_database()

@@ -1,4 +1,4 @@
-from db import addUser 
+from db import addUser , addComment , addThread
 class User:
     def __init__(self, username, password,email):
         """
@@ -10,7 +10,7 @@ class User:
         self.username = username
         self.email = email
         self.threads = []
-        addUser(username, password, email)
+        self.userId = addUser(username, password, email)
         
 
     def create_thread(self, title, content):
@@ -22,7 +22,7 @@ class User:
         :return: The created Thread object.
         """
         thread = Thread(title, content, self)
-        self.threads.append(thread)
+        self.threads.append(thread.ThreadId)
         return thread
 
 class Thread:
@@ -38,8 +38,10 @@ class Thread:
         self.content = content
         self.author = author
         self.comments = []
+        self.ThreadId=addThread(title,content,author)
 
-    def add_comment(self, content, author):
+
+    def add_comment(self,ThreadID, content, author):
         """
         Add a new comment to the thread.
 
@@ -49,6 +51,7 @@ class Thread:
         """
         comment = Comment(content, author)
         self.comments.append(comment)
+        addComment(ThreadID,content,author)
         return comment
 
 class Comment:
@@ -61,3 +64,4 @@ class Comment:
         """
         self.content = content
         self.author = author
+        
