@@ -1,5 +1,5 @@
 from modules import is_valid_email, is_valid_name,is_valid_password,get_valid_input
-
+import json
 
 users = []
 
@@ -27,7 +27,7 @@ while trips:
     1) User name
     2) Email
     3) Password''')
-        user_name = get_valid_input("Full namesw: ", is_valid_name)
+        user_name = get_valid_input("Full name: ", is_valid_name)
         user_email = get_valid_input("Email: ", is_valid_email)
         user_password = get_valid_input("Password: ", is_valid_password)
         print("Registration Successfully!")
@@ -38,6 +38,16 @@ while trips:
             }
         }
         users.append(user_form)
+        with open("users.json","w+", encoding="uft-8") as file:
+            json.dump(users, file ,indent=4)
+            print("your data is save")
         registration = False
     elif user_input == 2:
-        pass
+        print("Welcome to The Cycle Bark")
+        print("To login insert your email and password below.")
+        user_email_input = input("Email: ")
+        user_password_input = input("Password")
+        trips = False
+        print(''' 
+        To view History Enter 1 
+        To start new trip Enter 2''')

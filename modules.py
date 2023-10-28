@@ -1,7 +1,5 @@
 import re
-
-class cycle:
-    pass
+import json
 
 def is_valid_email(email):
     pattern = r'^[\w\.-]+@[\w\.-]+(\.[\w]+)+$'
@@ -16,17 +14,15 @@ def is_valid_name(name):
     return print("please enter a valid name")
 
 def is_valid_password(password):
-    # Check the minimum length requirement
+
     if len(password) < 8:
         return print("please enter at least 8 digits or character")
-
-    # Check for complexity (requires at least one upper, one lower, one digit, and one special character)
+    
     if not re.search(r'[A-Z]', password) or \
        not re.search(r'[a-z]', password) or \
        not re.search(r'\d', password) or \
        not re.search(r'[^A-Za-z0-9]', password):
         return print("Note: requires at least one upper, one lower, one digit, and one special character")
-    
     return True
 
 def get_valid_input(prompt, validator_func):
@@ -35,3 +31,9 @@ def get_valid_input(prompt, validator_func):
         user_input = input(prompt)
         if validator_func(user_input):
             return user_input
+
+def is_email_and_password_valid(email,password):
+    users = []
+    with open("users.json", "a+", encoding="utf-8") as file:
+        users = json.load(file)
+    pass
