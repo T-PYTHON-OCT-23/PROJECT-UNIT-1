@@ -164,8 +164,9 @@ def get_all_categories():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None
+    
 
-def getUser(username,password):
+def getUser(username, password):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
@@ -175,9 +176,10 @@ def getUser(username,password):
         cursor.close()
         return user
     except mysql.connector.Error as err:
-        print(f"Error: {err}")
+        print(f"Error in getUser: {err}")
         return None
 
+    
 if __name__ == "__main__":
     conn = connect_to_database()
     if conn:
