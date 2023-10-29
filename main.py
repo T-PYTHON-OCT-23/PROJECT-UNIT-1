@@ -23,15 +23,18 @@ def printAllThreads(category_name):
         print("No threads found in the specified category.")
 
 def registerUser():
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
-    password = hashlib.sha256(password.encode()).hexdigest()
-    email = input("Enter your email: ")
-    if not is_valid_email(email):
-        print(Back.RED + "Invalid email address")
-        return registerUser()
-    user = User(username, password, email)
-    print(Back.GREEN + f"Created a new user with user ID {user.userId}")
+    while True:
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        password = hashlib.sha256(password.encode()).hexdigest()
+        email = input("Enter your email: ")
+
+        if is_valid_email(email):
+            user = User(username, password, email)
+            print(Back.GREEN + f"Created a new user with user ID {user.userId}")
+            break  # Exit the loop when registration is successful
+        else:
+            print(Back.RED + "Invalid email address. Please try again.")
 
 def login():
     while True:
