@@ -57,8 +57,6 @@ def addThread(user):
     thread = Thread(title, content,Category, user)
     print(Back.GREEN + f"Created a new thread with thread ID {thread.thread_id}")
     
-
-
 def addComment(user):
     content = input("Enter the content of the comment: ")
     thread_id = input("Enter the ID of the thread: ")
@@ -91,14 +89,20 @@ def main():
         elif choice == "4":
             user = login()
         elif choice == "5":
-            if user:
-                addThread(user)
-            else:
+            try:
+                if user:
+                    addThread(user)
+                else:
+                    print(Back.RED + "Please log in first.")
+            except:
                 print(Back.RED + "Please log in first.")
         elif choice == "6":
-            if user:
-                addComment(user)
-            else:
+            try:
+                if user:
+                    addComment(user)
+                else:
+                    print(Back.RED + "Please log in first.")
+            except:
                 print(Back.RED + "Please log in first.")
         elif choice == "0":
             print("Goodbye!")

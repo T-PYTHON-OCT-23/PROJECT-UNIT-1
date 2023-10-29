@@ -206,6 +206,19 @@ def getUser(username, password):
         print(f"Error in getUser: {err}")
         return None
 
+def addCategory(category_name):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "INSERT INTO categories (category_name) VALUES (%s)"
+        cursor.execute(query, (category_name,))
+        conn.commit()
+        # Get the user_id of the newly added category
+        category_id = cursor.lastrowid
+        cursor.close()
+        return category_id
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
     
 if __name__ == "__main__":
     conn = connect_to_database()
