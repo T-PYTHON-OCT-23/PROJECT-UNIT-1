@@ -94,8 +94,6 @@ def addThread(title, content, user_id):
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         
-        
-
 def removeThread(thread_id):
     conn = connect_to_database()
     try:

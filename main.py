@@ -5,6 +5,8 @@ from colorama import Back
 import hashlib
 import re
 
+password_is_valid = lambda password: len(password) >= 8 and any(c.isupper() for c in password) and any(c.islower() for c in password)
+
 def is_valid_email(email):
     # Regular expression pattern for a basic email validation
     return False if len(email) > 50 else True
@@ -29,13 +31,15 @@ def registerUser():
         password = input("Enter your password: ")
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         email = input("Enter your email: ")
-
-        if is_valid_email(email):
-            user = User(username, password, email)
-            print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
-            break  # Exit the loop when registration is successful
+        if not password_is_valid(password):
+            print(Back.RED + "Password must be at least 8 characters long and contain at least one uppercase and one lowercase letter.")
         else:
-            print(Back.RED + "Invalid email address. Please try again.")
+            if is_valid_email(email):
+                user = User(username, password, email)
+                print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
+                break  # Exit the loop when registration is successful
+            else:
+                print(Back.RED + "Invalid email address. Please try again.")
 
 def login():
     while True:
@@ -56,6 +60,8 @@ def addThread(user):
     title = input("Enter the title of the thread: ")
     thread = Thread(title, content, user)
     print(Back.GREEN + f"Created a new thread with thread ID {thread.thread_id}")
+    
+
 
 def addComment(user):
     content = input("Enter the content of the comment: ")
