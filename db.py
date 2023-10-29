@@ -4,8 +4,8 @@ def connect_to_database():
     try:
         conn = mysql.connector.connect(
             host="localhost",
-            user="your_username",
-            password="your_password",
+            user="bader",
+            password="root12345",
             database="forum_db"  # Assuming your database is already created
         )
         return conn

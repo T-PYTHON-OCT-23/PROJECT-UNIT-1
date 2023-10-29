@@ -3,6 +3,17 @@ from user import User , Thread , Comment
 from art import tprint
 from colorama import Back
 import hashlib 
+import re
+
+def is_valid_email(email):
+    # Regular expression pattern for a basic email validation
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    
+    # Use the re.match function to check if the email matches the pattern
+    if re.match(pattern, email):
+        return True
+    else:
+        return False
 
 def allCategories():
     for i in get_all_categories():
@@ -26,8 +37,12 @@ def registerUser():
     password = input("Enter your password: ")
     password = hashlib.sha256(password.encode()).hexdigest()
     email = input("Enter your email: ")
+    if not is_valid_email(email):
+        print(Back.RED, "Invalid email address")
+        return registerUser()
     user = User(username, password, email)
-    print(Back.green,f"Created a new user with user ID {user.userId}")
+    print(Back.GREEN,f"Created a new user with user ID {user.userId}")
+    
 
 def login():
     username = input("Enter your username: ")
@@ -35,22 +50,25 @@ def login():
     password = hashlib.sha256(password.encode()).hexdigest()
     user = User.login(username, password)
     if user:
-        print(Back.green,f"Logged in as user ID {user.userId}")
+        print(Back.GREEN,f"Logged in as user ID {user.userId}")
         return user
+    else:
+        print(Back.RED, "Invalid username or password")
+        return login()
 
 def addThread():
     login = login()
     content = input("Enter the content of the thread: ")
     title = input("Enter the title of the thread: ")
     thread = Thread(title, content, login.user)
-    print(Back.green,f"Created a new thread with thread ID {thread.thread_id}")
+    print(Back.GREEN,f"Created a new thread with thread ID {thread.thread_id}")
 
 def addComment():
     login = login()
     content = input("Enter the content of the comment: ")
     thread_id = input("Enter the ID of the thread: ")
     comment = Comment(thread_id, content, login.user)
-    print(Back.green,f"Created a new comment with comment ID {comment.comment_id}")
+    print(Back.GREEN,f"Created a new comment with comment ID {comment.comment_id}")
 
 
 def main():
@@ -79,15 +97,18 @@ def main():
         elif choice == "4":
             user = login()
         elif choice == "5":
-            if user:
-                addThread(user)
+            try:
+                if user:
+                    addThread(user)
+            except:
+                print(Back.RED, "Please log in first.")
             else:
-                print(Back.red, "Please log in first.")
+                print(Back.RED, "Please log in first.")
         elif choice == "6":
             if user:
                 addComment(user)
             else:
-                print(Back.red, "Please log in first.")
+                print(Back.RED, "Please log in first.")
         elif choice == "0":
             print("Goodbye!")
             break
