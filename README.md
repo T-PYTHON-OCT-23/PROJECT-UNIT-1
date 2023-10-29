@@ -1,17 +1,4 @@
-# PROJECT-UNIT-1
-
-
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
-
-- Must be interactive on CLI.
-- Use lists or dictionaries or tuples. 
-- Use loops.
-- Use functions that return an output . 
-- Use a Lambda function.
-- Use at least 1 Class.
-- Use some form of Error Handling .
-- Organize Your Code into modules & (or packages)
-
+# TECH FOURMS
 ## Tech Forums Project Readme
 
 Welcome to the Tech Forums project! This project is designed to create an online platform where tech enthusiasts can discuss various topics related to technology, seek help, and share their knowledge. Here's an overview of the project and how to use it.
