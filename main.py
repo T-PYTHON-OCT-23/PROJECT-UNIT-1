@@ -6,12 +6,7 @@ import hashlib
 import re
 
 password_is_valid = lambda password: len(password) >= 8 and any(c.isupper() for c in password) and any(c.islower() for c in password)
-
-def is_valid_email(email):
-    # Regular expression pattern for a basic email validation
-    return False if len(email) > 50 else True
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return bool(re.match(pattern, email))
+email_vaild = lambda email: len(email) <= 50 and bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
 
 def allCategories():
     for category in get_all_categories():
@@ -34,7 +29,7 @@ def registerUser():
         if not password_is_valid(password):
             print(Back.RED + "Password must be at least 8 characters long and contain at least one uppercase and one lowercase letter.")
         else:
-            if is_valid_email(email):
+            if email_vaild(email):
                 user = User(username, password, email)
                 print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
                 break  # Exit the loop when registration is successful
