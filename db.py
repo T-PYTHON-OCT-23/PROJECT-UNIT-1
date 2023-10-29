@@ -55,6 +55,19 @@ def create_tables(conn):
                 FOREIGN KEY (thread_id) REFERENCES threads(thread_id)
             );
         """)
+        cursor.execute("""CREATE TABLE IF NOT EXISTS categories (
+            category_id INT AUTO_INCREMENT PRIMARY KEY,
+            category_name VARCHAR(50) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+        CREATE TABLE IF NOT EXISTS thread_categories (
+            thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
+            thread_id INT,
+            category_id INT,
+            FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
+            FOREIGN KEY (category_id) REFERENCES categories(category_id)
+        );
+        """)
 
         conn.commit()
         cursor.close()
@@ -80,7 +93,7 @@ def addUser(username, password, email):
 
 # Similar functions for addThread, addComment, getUser, getThread, getComment, getThreads, getComments
 
-def addThread(title, content, user_id):
+def addThread(title, content,category, user_id):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
@@ -93,6 +106,20 @@ def addThread(title, content, user_id):
         return thread_id
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+        
+
+def addThreadCategory(thread_id, category_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "INSERT INTO thread_categories (thread_id, category_id) VALUES (%s, %s)"
+        values = (thread_id, category_id)
+        cursor.execute(query, values)
+        conn.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")        
+      
         
 def removeThread(thread_id):
     conn = connect_to_database()

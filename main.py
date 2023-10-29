@@ -53,7 +53,8 @@ def login():
 def addThread(user):
     content = input("Enter the content of the thread: ")
     title = input("Enter the title of the thread: ")
-    thread = Thread(title, content, user)
+    Category= input("Enter the category of the thread: ")
+    thread = Thread(title, content,Category, user)
     print(Back.GREEN + f"Created a new thread with thread ID {thread.thread_id}")
     
 

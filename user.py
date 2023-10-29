@@ -1,4 +1,4 @@
-from db import addUser , addComment , addThread , removeThread , removeComment , getUser
+from db import addUser , addComment , addThread , removeThread , removeComment , getUser , addThreadCategory
 class User:
     def __init__(self, username, password,email):
         """
@@ -59,7 +59,7 @@ class User:
         return thread
 
 class Thread:
-    def __init__(self, title, content, author):
+    def __init__(self, title, content,category, author):
         """
         Initialize a Thread object.
 
@@ -71,7 +71,9 @@ class Thread:
         self.content = content
         self.author = author
         self.comments = []
-        self.ThreadId=addThread(title,content,author)
+        self.category = category
+        self.ThreadId=addThread(title,content,category,author)
+        addThreadCategory(category, self.ThreadId)
 
 
     def add_comment(self,ThreadID, content, author):
