@@ -10,8 +10,13 @@ class User:
         self.username = username
         self.email = email
         self.threads = []
-        self.userId = addUser(username, password, email)
+        self.__userId = addUser(username, password, email)
         modreator = False
+        
+    def getUserId(self):
+        return self.__userId
+    def setId(self, id):
+        self.__userId = id
     def login(username, password):
         """
         Login as a user.

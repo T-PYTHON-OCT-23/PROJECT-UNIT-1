@@ -7,6 +7,7 @@ import re
 
 def is_valid_email(email):
     # Regular expression pattern for a basic email validation
+    return False if len(email) > 50 else True
     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
     return bool(re.match(pattern, email))
 
@@ -26,12 +27,12 @@ def registerUser():
     while True:
         username = input("Enter your username: ")
         password = input("Enter your password: ")
-        password = hashlib.sha256(password.encode()).hexdigest()
+        password = hashlib.sha256(password.encode()).hexdigest()[:50]
         email = input("Enter your email: ")
 
         if is_valid_email(email):
             user = User(username, password, email)
-            print(Back.GREEN + f"Created a new user with user ID {user.userId}")
+            print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
             break  # Exit the loop when registration is successful
         else:
             print(Back.RED + "Invalid email address. Please try again.")
@@ -40,10 +41,12 @@ def login():
     while True:
         username = input("Enter your username: ")
         password = input("Enter your password: ")
-        password = hashlib.sha256(password.encode()).hexdigest()
+        password = hashlib.sha256(password.encode()).hexdigest()[:50]
         user = User.login(username, password)
+        newUser = User(user[2], user[2], user[3])
+        newUser.setId(user[0])
         if user:
-            print(Back.GREEN + f"Logged in as user ID {user.userId}")
+            print(Back.GREEN + f"Logged in as user ID {newUser.getUserId()}")
             return user
         else:
             print(Back.RED + "Invalid username or password. Please try again.")

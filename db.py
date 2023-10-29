@@ -168,6 +168,7 @@ def get_all_categories():
 
 def getUser(username, password):
     conn = connect_to_database()
+    print(username, password)
     try:
         cursor = conn.cursor()
         query = "SELECT * FROM users WHERE username = %s AND password = %s"
