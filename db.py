@@ -55,18 +55,19 @@ def create_tables(conn):
                 FOREIGN KEY (thread_id) REFERENCES threads(thread_id)
             );
         """)
-        cursor.execute("""CREATE TABLE IF NOT EXISTS categories (
-            category_id INT AUTO_INCREMENT PRIMARY KEY,
-            category_name VARCHAR(50) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS categories (
+        category_id INT AUTO_INCREMENT PRIMARY KEY,
+        category_name VARCHAR(50) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
-        CREATE TABLE IF NOT EXISTS thread_categories (
-            thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
-            thread_id INT,
-            category_id INT,
-            FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
-            FOREIGN KEY (category_id) REFERENCES categories(category_id)
-        );
+    CREATE TABLE IF NOT EXISTS thread_categories (
+        thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
+        thread_id INT,
+        category_id INT,
+        FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
+        FOREIGN KEY (category_id) REFERENCES categories(category_id)
+    );
         """)
 
         conn.commit()
