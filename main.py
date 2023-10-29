@@ -34,16 +34,16 @@ def registerUser():
     print(Back.GREEN + f"Created a new user with user ID {user.userId}")
 
 def login():
-    username = input("Enter your username: ")
-    password = input("Enter your password: ")
-    password = hashlib.sha256(password.encode()).hexdigest()
-    user = User.login(username, password)
-    if user:
-        print(Back.GREEN + f"Logged in as user ID {user.userId}")
-        return user
-    else:
-        print(Back.RED + "Invalid username or password")
-        return login()
+    while True:
+        username = input("Enter your username: ")
+        password = input("Enter your password: ")
+        password = hashlib.sha256(password.encode()).hexdigest()
+        user = User.login(username, password)
+        if user:
+            print(Back.GREEN + f"Logged in as user ID {user.userId}")
+            return user
+        else:
+            print(Back.RED + "Invalid username or password. Please try again.")
 
 def addThread(user):
     content = input("Enter the content of the thread: ")
