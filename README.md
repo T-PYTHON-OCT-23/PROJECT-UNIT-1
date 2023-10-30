@@ -62,4 +62,61 @@ If you encounter any issues or have suggestions for improving Tech Forums, pleas
 
 Thank you for joining Tech Forums, and we hope you enjoy your experience in this tech-savvy community!
 
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
+### About The Code 
+
+### Function: `addThreadCategory(thread_id, category_id)`
+- This function is used to add a thread to a category in a database.
+- It takes two parameters: `thread_id` and `category_id`.
+- It connects to the database, creates a cursor, and executes an SQL INSERT statement.
+- If an error occurs, it catches the exception and prints an error message.
+
+### Function: `removeThread(thread_id)`
+- This function is used to remove a thread from the database by its `thread_id`.
+- It takes one parameter: `thread_id`.
+- It connects to the database, creates a cursor, and executes an SQL DELETE statement.
+- If an error occurs, it catches the exception and prints an error message.
+
+### Function: `removeComment(comment_id)`
+- This function is used to remove a comment from the database by its `comment_id`.
+- It takes one parameter: `comment_id`.
+- It connects to the database, creates a cursor, and executes an SQL DELETE statement.
+- If an error occurs, it catches the exception and prints an error message.
+
+### Function: `addComment(thread_id, content, user_id)`
+- This function is used to add a comment to a thread in the database.
+- It takes three parameters: `thread_id`, `content`, and `user_id`.
+- It connects to the database, creates a cursor, and executes an SQL INSERT statement.
+- If an error occurs, it catches the exception and prints an error message.
+
+## Class: `Mongo`
+The `Mongo` class provides a set of methods for interacting with a MongoDB database. It is designed to handle operations related to threads and categories within the database.
+
+### Constructor: `__init__(self, host, port, database)`
+- The constructor initializes a connection to a MongoDB server and selects a specific database.
+- It takes three parameters: `host`, `port`, and `database`.
+- It establishes a connection to the MongoDB server using the provided host and port and selects the specified database for further operations.
+
+### Method: `addToMongo(self, thread_id, title, content, category, author)`
+- This method is used to add a thread document to a specific category within the MongoDB database.
+- It takes five parameters: `thread_id`, `title`, `content`, `category`, and `author`.
+- It creates a document with the provided data and inserts it into a MongoDB collection named after the specified category.
+
+### Method: `getCategories(self, category)`
+- This method creates collections within the MongoDB database based on a list of categories.
+- It takes a single parameter: `category`, which is a list of category names.
+- For each category in the list, a new collection is created within the database to organize threads.
+
+### Method: `getThreads(self, category)`
+- This method retrieves all threads from a specified category in the MongoDB database.
+- It takes one parameter: `category`, which is the name of the category to retrieve threads from.
+- It fetches all documents from the MongoDB collection associated with the specified category and returns them.
+
+### Method: `getThreadsById(self, category, id)`
+- This method retrieves a specific thread from a specified category in the MongoDB database by its `thread_id`.
+- It takes two parameters: `category` and `id`.
+- It searches the MongoDB collection associated with the specified category for documents with a matching `thread_id` and returns them.
+
+### Method: `removeThread(self, category, id)`
+- This method removes a specific thread from a specified category in the MongoDB database by its `thread_id`.
+- It takes two parameters: `category` and `id`.
+- It searches the MongoDB collection associated with the specified category for documents with a matching `thread_id` and deletes them.
