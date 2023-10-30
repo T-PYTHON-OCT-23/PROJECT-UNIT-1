@@ -15,6 +15,19 @@ def connect_to_database():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None
+    
+def getPrevelage(self, user_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "SELECT admin FROM users WHERE user_id = %s"
+        cursor.execute(query, (user_id,))
+        user = cursor.fetchone()
+        cursor.close()
+        return user
+    except mysql.connector.Error as err:
+        print(f"Error in getUser: {err}")
+        return None
 
 def close_connection(conn):
     conn.close()
@@ -29,6 +42,7 @@ def create_tables(conn):
                 user_id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(50) UNIQUE NOT NULL,
                 password VARCHAR(50) NOT NULL,
+                admin BOOLEAN DEFAULT FALSE,
                 email VARCHAR(50) UNIQUE NOT NULL
             );
         """)
@@ -38,7 +52,6 @@ def create_tables(conn):
             CREATE TABLE IF NOT EXISTS threads (
                 thread_id INT AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(100) NOT NULL,
-                content TEXT NOT NULL,
                 user_id INT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(user_id)

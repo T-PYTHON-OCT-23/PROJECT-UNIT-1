@@ -1,4 +1,4 @@
-from db import addUser , removeThread , getUser
+from db import addUser , removeThread , getUser , getPrevelage
 from post import Thread
 
 class User:
@@ -13,7 +13,9 @@ class User:
         self.email = email
         self.threads = []
         self.__userId = addUser(username, password, email)
-        modreator = False
+        modreator = getPrevelage(self.__userId)
+        
+        
         
     def getUserId(self):
         return self.__userId
