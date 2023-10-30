@@ -6,6 +6,8 @@ from art import tprint
 from colorama import Back
 import hashlib
 import re
+import getpass
+
 
 # lambda for password validation
 
@@ -32,7 +34,7 @@ def printAllThreads(category_name):
 def registerUser():
     while True:
         username = input("Enter your username: ")
-        password = input("Enter your password: ")
+        password = getpass.getpass("Enter your password: ")
         temp=password
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         email = input("Enter your email: ")
@@ -47,7 +49,7 @@ def registerUser():
 def login():
     while True:
         username = input("Enter your username: ")
-        password = input("Enter your password: ")
+        password = getpass.getpass("Enter your password: ")
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         user = User.login(username, password)
         newUser = User(user[2], user[2], user[3])
