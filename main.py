@@ -6,8 +6,15 @@ from colorama import Back
 import hashlib
 import re
 
-password_is_valid = lambda password: len(password) >= 8 and any(c.isupper() for c in password) and any(c.islower() for c in password)
-email_vaild = lambda email: len(email) <= 50 and bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
+# lambda for password validation
+
+password_is_valid = lambda password: len(password) >= 8 and any(c.isupper() for c in password) and any(c.islower() for c in password) and any(c.isdigit() for c in password)
+
+# Lambda for email validation
+email_valid = lambda email: len(email) <= 50 and bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', email))
+
+# Lambda for username validation (assuming usernames should be between 3 and 20 characters)
+username_valid = lambda username: 3 <= len(username) <= 20 and bool(re.match(r'^[a-zA-Z0-9_]+$', username))
 
 def allCategories():
     for category in get_all_categories():
@@ -25,12 +32,11 @@ def registerUser():
     while True:
         username = input("Enter your username: ")
         password = input("Enter your password: ")
+        temp=password
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         email = input("Enter your email: ")
-        if not password_is_valid(password):
-            print(Back.RED + "Password must be at least 8 characters long and contain at least one uppercase and one lowercase letter.")
-        else:
-            if email_vaild(email):
+        if password_is_valid(temp):
+            if email_valid(email):
                 user = User(username, password, email)
                 print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
                 break  # Exit the loop when registration is successful
