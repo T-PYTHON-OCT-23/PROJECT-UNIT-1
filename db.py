@@ -29,8 +29,6 @@ def getPrevelage(self, user_id):
         print(f"Error in getUser: {err}")
         return None
 
-def close_connection(conn):
-    conn.close()
 
 def create_tables(conn):
     try:
@@ -241,4 +239,4 @@ if __name__ == "__main__":
     if conn:
         create_tables(conn)
         # You can call your database functions here
-        close_connection(conn)
+        conn.close()
