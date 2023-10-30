@@ -16,7 +16,7 @@ def connect_to_database():
         print(f"Error: {err}")
         return None
     
-def getPrevelage(self, user_id):
+def getPrevelage(user_id):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
