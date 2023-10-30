@@ -1,5 +1,5 @@
 from db import addComment , addThread  , removeComment , addThreadCategory , addCategory
-
+from mongo import removeThread , addToMongo
 class Thread:
     def __init__(self, title, content,category, author):
         """
@@ -14,9 +14,10 @@ class Thread:
         self.author = author
         self.comments = []
         self.category = category
-        self.ThreadId=addThread(title,content,category,author)
+        self.ThreadId=addThread(title,category,author)
         addThreadCategory(category, self.ThreadId)
         category.add_thread(self)
+        addToMongo(self.ThreadId, title, content,category, author)
 
 
     def add_comment(self,ThreadID, content, author):
@@ -69,6 +70,7 @@ class catgory:
         
     def remove_thread(self, thread):
         self.threads.remove(thread)
+        removeThread(thread.thread_id)
         
     def get_category_id(self):
         return self.__categoryId

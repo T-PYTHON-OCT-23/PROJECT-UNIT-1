@@ -1,11 +1,14 @@
 import mysql.connector
 # Connect to the MySQL database
+import os 
+from mongo import getCategories
+
 def connect_to_database():
     try:
         conn = mysql.connector.connect(
-            host="localhost",
+            host=os.getenv("HOST_MYSQL"),
             user="bader",
-            password="root12345",
+            password=os.getenv("PASSWORD_MYSQL"),
             database="forum_db"  # Assuming your database is already created
         )
         return conn
@@ -94,12 +97,12 @@ def addUser(username, password, email):
 
 # Similar functions for addThread, addComment, getUser, getThread, getComment, getThreads, getComments
 
-def addThread(title, content,category, user_id):
+def addThread(title, Category, user_id):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO threads (title, content, user_id) VALUES (%s, %s, %s)"
-        values = (title, content, user_id)
+        query = "INSERT INTO threads (title, Category, user_id) VALUES (%s, %s, %s)"
+        values = (title, Category, user_id)
         cursor.execute(query, values)
         conn.commit()
         thread_id = cursor.lastrowid
@@ -186,7 +189,7 @@ def get_all_categories():
         cursor.execute("SELECT category_name FROM categories")
         categories = [row[0] for row in cursor.fetchall()]
         cursor.close()
-        return categories
+        return categories , getCategories(categories)
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None

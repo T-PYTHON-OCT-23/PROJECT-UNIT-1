@@ -1,5 +1,6 @@
 from db import addUser , removeThread , getUser
 from post import Thread
+
 class User:
     def __init__(self, username, password, email):
         """
@@ -40,6 +41,7 @@ class User:
             if thread in self.threads:
                 self.threads.remove(thread)
                 removeThread(thread.thread_id)
+                
             else:
                 raise Exception("Thread not found in the user's list of threads")
         else:

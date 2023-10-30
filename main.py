@@ -1,5 +1,6 @@
 from db import getThreadsInCategory, get_all_categories, addCategory
 from user import User
+from mongo import getThredsById
 from post import Thread, Comment
 from art import tprint
 from colorama import Back
@@ -91,6 +92,8 @@ def main():
         elif choice == "2":
             category_name = input("Enter the name of the category: ")
             printAllThreads(category_name)
+            input_=input("Enter the thread ID: ")
+            getThredsById(category_name,input_)            
         elif choice == "3":
             registerUser()
         elif choice == "4":
