@@ -1,5 +1,6 @@
-from db import getThreadsInCategory, get_all_categories
-from user import User, Thread, Comment
+from db import getThreadsInCategory, get_all_categories, addCategory
+from user import User
+from post import Thread, Comment
 from art import tprint
 from colorama import Back
 import hashlib
@@ -100,6 +101,15 @@ def main():
             try:
                 if user:
                     addComment(user)
+                else:
+                    print(Back.RED + "Please log in first.")
+            except:
+                print(Back.RED + "Please log in first.")
+        elif choice == "7":
+            try:
+                if user:
+                    input_ = input("Enter the name of the category: ")
+                    addCategory(input_)
                 else:
                     print(Back.RED + "Please log in first.")
             except:
