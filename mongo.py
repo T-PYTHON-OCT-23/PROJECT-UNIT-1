@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import os
 cluster = MongoClient(os.getenv("API_MONGO"))        #cluster name
-db = cluster["TECH_Fourms"]    #database name
+db = cluster["cluster0"]    #database name
 
 class Mongo:
     def __init__(self, host, port, database):
