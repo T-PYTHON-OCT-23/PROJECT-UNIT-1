@@ -47,6 +47,7 @@ def get_property_details():
         tenant_name = ""
 
     data = PropertyData(property_type,location,rooms,rent,occupancy,pay,start_date,end_date,rent_year,phone_number,tenant_name)
+    
     data.set_rooms(rooms)
     data.set_rent(rent)
     data.set_rent_year(rent_year)
@@ -67,23 +68,26 @@ def get_property_details():
 
         
     return {
-        "type": property_type,
-        "location": location,
+        "type": property_type.capitalize(),
+        "location": location.capitalize(),
         "rooms": rooms,
         "rent_ber_month": rent,
         "rent_ber_year": rent_year,
-        "occupancy": occupancy,
-        "pay":pay,
+        "occupancy": occupancy.capitalize(),
+        "pay":pay.capitalize(),
         "start_date": start_date,
         "end_date" :end_date,
         "phone_number": phone_number,
-        "tenant_name": tenant_name
+        "tenant_name": tenant_name.capitalize()
         }
         
 
 
 def update_property_details(property_data):
+    
     while True:
+        print(Fore.LIGHTBLUE_EX)
+        print(Back.LIGHTBLACK_EX)
         tprint("Enter your choice  (1-8) To Update",font="cybermedum")
         menu_items = [
             ["1.", "Ubdate Rent"],
@@ -102,36 +106,38 @@ def update_property_details(property_data):
         if choice == "1":
             price = input("do price:")
             property_data["rent_ber_month"]= price
-            return property_data
+            
+            
         elif choice == "2":
-                occupancy = input("Enter pay update onle (Empty) or (Not Empty):")
-                property_data["occupancy"]= occupancy
-                return property_data
+            occupancy = input("Enter pay update onle (Empty) or (Not Empty):")
+            property_data["occupancy"]= occupancy
+            
         elif choice == "3":
             pay = input("Enter occupancy update onle (Pay) or (Not Pay) or (): ")
             property_data["pay"]= pay
-            return property_data    
+               
         elif choice == "4":
             start_date = input("Enter update start date in the following (dd-mm-yyyy): ")
             property_data["start_date"]= start_date
-            return property_data 
+             
         elif choice == "5":
             end_date = input("Enter update end date in the following (dd-mm-yyyy): ")
             property_data["end_date"]= end_date
-            return property_data 
+            
         elif choice == "6":
             phone = input("Enter update tenant phone number: ")
             property_data["phone_number"]= phone
-            return property_data
+            
         elif choice == "7":
             name = input("Enter update tenant name: ")
             property_data["tenant_name"]= name
-            return property_data  
+  
         elif choice == "8":
             tprint("Update Done!!",font="block-medium")
             break        
         else:
             print(Fore.RED+"Error Choice"+Style.RESET_ALL)
+    return property_data
 def get_property_id():
     return int(input("Enter Property ID: "))
 
@@ -140,12 +146,12 @@ def search_properties():
     return search_criteria
 def main():
     property_manager = PropertyManager("property_data.json")
-    print(Fore.BLUE)
-    print(Back.WHITE)
+    print(Fore.LIGHTBLUE_EX)
+    print(Back.LIGHTBLACK_EX)
     display_menu()
     while True:
-        print(Fore.BLUE)
-        print(Back.WHITE)
+        print(Fore.LIGHTBLUE_EX)
+        print(Back.LIGHTBLACK_EX)
         tprint("Enter your choice (1-8): ",font="cybermedum")
         choice = input("Enter your choice (1-8): ")
         try:

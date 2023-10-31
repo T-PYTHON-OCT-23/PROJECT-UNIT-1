@@ -4,6 +4,7 @@ from tabulate import tabulate
 from art import *
 from colorama import *
 import random
+
 class PropertyManager:
     def __init__(self , file_path):
         self .file_path = file_path
@@ -63,7 +64,7 @@ class PropertyManager:
             return found_property[0]
         else:
             raise Exception("Not found")
-    
+        
     def update_property(self, property_id,ubdate_data):
         for propert in self.properties:
             if propert["id"] == property_id:
@@ -81,7 +82,7 @@ class PropertyManager:
     def search_properties(self, search_criteria):
         search_results = []
         for propert in self.properties:
-            if search_criteria in propert.values():
+            if search_criteria.capitalize() in propert.values():
                 search_results.append(propert)
         if search_results:
             print(Fore.GREEN + f"Search results for '{search_criteria}':" + Style.RESET_ALL)
