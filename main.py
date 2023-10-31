@@ -38,13 +38,19 @@ def registerUser():
         temp=password
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         email = input("Enter your email: ")
+        if not username_valid(username):
+            print(Back.RED + "Invalid username. Please try again.")
         if password_is_valid(temp):
             if email_valid(email):
                 user = User(username, password, email)
+                if user.getUserId == None:
+                    break
                 print(Back.GREEN + f"Created a new user with user ID {user.getUserId()}")
                 break  # Exit the loop when registration is successful
             else:
                 print(Back.RED + "Invalid email address. Please try again.")
+        else:
+            print(Back.RED + "Invalid password. Please try again.")
 
 def login():
     while True:

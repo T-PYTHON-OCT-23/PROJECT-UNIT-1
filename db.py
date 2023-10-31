@@ -2,12 +2,13 @@ import mysql.connector
 # Connect to the MySQL database
 import os 
 from mongo import getCategories
-
+from dotenv import load_dotenv
+load_dotenv()
 def connect_to_database():
     try:
         conn = mysql.connector.connect(
             host=os.getenv("HOST_MYSQL"),
-            user="bader",
+            user=os.getenv("USER_MYSQL"),
             password=os.getenv("PASSWORD_MYSQL"),
             database="forum_db"  # Assuming your database is already created
         )
@@ -208,7 +209,6 @@ def get_all_categories():
 
 def getUser(username, password):
     conn = connect_to_database()
-    print(username, password)
     try:
         cursor = conn.cursor()
         query = "SELECT * FROM users WHERE username = %s AND password = %s"

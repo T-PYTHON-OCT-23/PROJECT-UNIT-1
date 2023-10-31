@@ -13,7 +13,7 @@ class User:
         self.email = email
         self.threads = []
         self.__userId = addUser(username, password, email)
-        modreator = getPrevelage(self.__userId)
+        self.modreator = getPrevelage(self.__userId)
         
         
         

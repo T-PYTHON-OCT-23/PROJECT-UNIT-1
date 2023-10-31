@@ -1,13 +1,13 @@
 from pymongo import MongoClient
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
 
 class Mongo:
     def __init__(self):
-        self.cluster = MongoClient(os.getenv("API_MONGO"))        #cluster name
-        self.db = self.cluster["cluster0"]    #database name
-        print("MongoDB connected")
-
+        self.cluster = MongoClient(os.getenv('API_MONGO'))        #cluster name
+        self.db = self.cluster[os.getenv('MONGO_CLUSTER')]    #database name
+    
 def addToMongo(self, thread_id, title, content, category, author):
 # Create a document with the data
     thread_data = {
