@@ -1,5 +1,5 @@
 from db import addComment , addThread  , removeComment , addThreadCategory , addCategory , get_all_categories
-from mongo import removeThread , addToMongo
+from mongo import removeThread , addToMongo , CreateCategories , getAllCategories
 class Thread:
     def __init__(self, title, content,category, author):
         """
@@ -18,7 +18,7 @@ class Thread:
         addThreadCategory(category, self.ThreadId)
         category = catgory(category)
         category.add_thread(self)
-        addToMongo(self.ThreadId, title, content,category, author)
+        addToMongo(self,self.ThreadId, title, content,category, author)
 
 
     def add_comment(self,ThreadID, content, author):
@@ -79,15 +79,17 @@ class catgory:
         return self.threads
 
 def Initialize():
-    list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"]    
+    list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"] # List of categories
+    allMongos=getAllCategories()  
     try:
         for i in list_of_categories:
             if i not in get_all_categories():
                 catgory(i)
+            if i not in allMongos:
+                CreateCategories(i)
     except:
         for i in list_of_categories:
-            catgory(i)
-    
+            catgory(i)    
 
     
 Initialize()

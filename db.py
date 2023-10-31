@@ -79,7 +79,7 @@ def create_tables(conn):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS categories (
                 category_id INT AUTO_INCREMENT PRIMARY KEY,
-                category_name VARCHAR(50) NOT NULL,
+                category_name VARCHAR(50) UNIQUE NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         """)
