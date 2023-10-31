@@ -12,32 +12,31 @@
 - Use some form of Error Handling .
 - Organize Your Code into modules & (or packages)
 
-## Example Project :  An online Grocery Store :
+## Example Project :  Auto parts sales program :
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview: A program for selling auto parts to customers. This program has major users. Customer and store manager. Each of them must be able to do the following tasks for the store to function properly. 
 
 #### As a customer I should be able to do the following :
 - Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
+- View the product info ( specs, price)
 - Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
 - Get receipt of my purchases.
-- Check delivery status . 
+- Add Products to the shopping cart .
+- List the products in my shopping cart. 
+- continue to checkout .
+- Account Manager is able to print a sales report
+- A manager account is able to add products
+- An administrator account is able to delete products
 
 
 
 #### Usage :
  Explain to the user how to use your project . 
  for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
+ - Choose the appropriate number to browse the company's available products.
+ - Choose number 4 to purchase products and then print the invoice
+ - Numbers 5 and 6 to add and delete unavailable or new products
+ - Choose number 7 if you want to print the sales report . 
  - and so on...
 
 
