@@ -1,9 +1,11 @@
 import mysql.connector
-# Connect to the MySQL database
-import os 
-from mongo import getCategories
+import os
 from dotenv import load_dotenv
+
+# Load environment variables from a .env file
 load_dotenv()
+
+# Connect to the MySQL database
 def connect_to_database():
     try:
         conn = mysql.connector.connect(
@@ -16,7 +18,8 @@ def connect_to_database():
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None
-    
+
+# Retrieve user privileges
 def getPrevelage(user_id):
     conn = connect_to_database()
     try:
@@ -27,14 +30,14 @@ def getPrevelage(user_id):
         cursor.close()
         return user
     except mysql.connector.Error as err:
-        print(f"Error in getUser: {err}")
+        print(f"Error in getPrevelage: {err}")
         return None
 
-
+# Create database tables
 def create_tables(conn):
     try:
         cursor = conn.cursor()
-        
+
         # Create the users table
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS users (
@@ -70,19 +73,24 @@ def create_tables(conn):
                 FOREIGN KEY (thread_id) REFERENCES threads(thread_id)
             );
         """)
+
+        # Create the categories and thread_categories tables
         cursor.execute("""
-        CREATE TABLE IF NOT EXISTS categories (
-        category_id INT AUTO_INCREMENT PRIMARY KEY,
-        category_name VARCHAR(50) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        );
-    CREATE TABLE IF NOT EXISTS thread_categories (
-        thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
-        thread_id INT,
-        category_id INT,
-        FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
-        FOREIGN KEY (category_id) REFERENCES categories(category_id)
-    );
+            CREATE TABLE IF NOT EXISTS categories (
+                category_id INT AUTO_INCREMENT PRIMARY KEY,
+                category_name VARCHAR(50) NOT NULL,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS thread_categories (
+                thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
+                thread_id INT,
+                category_id INT,
+                FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
+                FOREIGN KEY (category_id) REFERENCES categories(category_id)
+            );
         """)
 
         conn.commit()
@@ -90,8 +98,9 @@ def create_tables(conn):
     except mysql.connector.Error as err:
         print(f"Error: {err}")
 
+# Add a user to the database
 def addUser(username, password, email):
-    conn=connect_to_database()
+    conn = connect_to_database()
     try:
         cursor = conn.cursor()
         query = "INSERT INTO users (username, password, email) VALUES (%s, %s, %s)"
@@ -101,14 +110,12 @@ def addUser(username, password, email):
         # Get the user_id of the newly added user
         user_id = cursor.lastrowid
         cursor.close()
-        return user_id 
+        return user_id
     except mysql.connector.Error as err:
         print(f"Error: {err}")
-    except:
-        print("Sorry we can not register you now try again later")
+        print("Sorry, we cannot register you now. Please try again later.")
 
-# Similar functions for addThread, addComment, getUser, getThread, getComment, getThreads, getComments
-
+# Add a thread to the database
 def addThread(title, Category, user_id):
     conn = connect_to_database()
     try:
@@ -122,8 +129,8 @@ def addThread(title, Category, user_id):
         return thread_id
     except mysql.connector.Error as err:
         print(f"Error: {err}")
-        
 
+# Add a thread-category association
 def addThreadCategory(thread_id, category_id):
     conn = connect_to_database()
     try:
@@ -134,9 +141,9 @@ def addThreadCategory(thread_id, category_id):
         conn.commit()
         cursor.close()
     except mysql.connector.Error as err:
-        print(f"Error: {err}")        
-      
-        
+        print(f"Error: {err}")
+
+# Remove a thread from the database
 def removeThread(thread_id):
     conn = connect_to_database()
     try:
@@ -147,8 +154,8 @@ def removeThread(thread_id):
         cursor.close()
     except mysql.connector.Error as err:
         print(f"Error: {err}")
-        
 
+# Remove a comment from the database
 def removeComment(comment_id):
     conn = connect_to_database()
     try:
@@ -160,40 +167,43 @@ def removeComment(comment_id):
     except mysql.connector.Error as err:
         print(f"Error: {err}")
 
-def addComment(theard_id, content, user_id):
+# Add a comment to the database
+def addComment(thread_id, content, user_id):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO comments (theard_id, content, user_id) VALUES (%s, %s, %s)"
-        values = (theard_id, content, user_id)
+        query = "INSERT INTO comments (thread_id, content, user_id) VALUES (%s, %s, %s)"
+        values = (thread_id, content, user_id)
         cursor.execute(query, values)
         conn.commit()
         cursor.close()
     except mysql.connector.Error as err:
         print(f"Error: {err}")
-        
 
+# Retrieve threads in a specific category
 def getThreadsInCategory(category_name):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
         query = """
-            SELECT t.thread_id, t.title, t.content, t.created_at, u.username
+            SELECT t.thread_id, t.title, t.created_at, u.username
             FROM threads t
             JOIN users u ON t.user_id = u.user_id
-            JOIN categories c ON t.category_id = c.category_id
+            JOIN thread_categories tc ON t.thread_id = tc.thread_id
+            JOIN categories c ON tc.category_id = c.category_id
             WHERE c.category_name = %s
         """
         cursor.execute(query, (category_name,))
-        
+
         threads = cursor.fetchall()
         cursor.close()
-        
+
         return threads
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None  # Return None to indicate an error
 
+# Get a list of all categories
 def get_all_categories():
     conn = connect_to_database()
     try:
@@ -238,5 +248,4 @@ if __name__ == "__main__":
     conn = connect_to_database()
     if conn:
         create_tables(conn)
-        # You can call your database functions here
         conn.close()
