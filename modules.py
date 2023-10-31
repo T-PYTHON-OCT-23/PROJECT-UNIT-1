@@ -1,6 +1,11 @@
 import re
 import json
 
+users = []
+with open("users.json", "r", encoding="utf-8") as file:
+    content = file.read()
+    users = json.loads(content)
+
 def is_valid_email(email):
     pattern = r'^[\w\.-]+@[\w\.-]+(\.[\w]+)+$'
     if re.match(pattern, email):
@@ -33,10 +38,6 @@ def get_valid_input(prompt, validator_func):
             return user_input
 
 def is_email_and_password_valid(email,password):
-    users = []
-    with open("users.json", "r", encoding="utf-8") as file:
-        content = file.read()
-        users = json.loads(content)
     
     login_successful = False
     for user in users:

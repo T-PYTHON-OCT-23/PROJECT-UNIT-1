@@ -4,7 +4,23 @@
             "from": "almasif",
             "to": "noura",
             "cost": 15,
-            "is_payed": "Not payed yet"
+            "is_payed": "Not payed it yet"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "almasif",
+            "to": "kfu",
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "Aldryiah",
+            "to": "noura",
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     }
 ]
