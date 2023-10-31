@@ -73,6 +73,11 @@ class catgory:
         removeThread(thread.thread_id)
         
     def get_category_id(self):
-        return self.__categoryId
+         return self.__categoryId
     def get_threads(self):
         return self.threads
+
+list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"]
+    
+for i in list_of_categories:
+    category = catgory(i)

@@ -112,8 +112,9 @@ def main():
                     addThread(user)
                 else:
                     print(Back.RED + "Please log in first.")
-            except:
+            except Exception as e:
                 print(Back.RED + "Please log in first.")
+                print(e)
         elif choice == "6":
             try:
                 if user:
