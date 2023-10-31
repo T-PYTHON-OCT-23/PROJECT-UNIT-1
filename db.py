@@ -12,7 +12,7 @@ def connect_to_database():
             host=os.getenv("HOST_MYSQL"),
             user=os.getenv("USER_MYSQL"),
             password=os.getenv("PASSWORD_MYSQL"),
-            database="forum_db"  # Assuming your database is already created
+            database="tech_fourm"  # Assuming your database is already created
         )
         return conn
     except mysql.connector.Error as err:
@@ -55,6 +55,7 @@ def create_tables(conn):
                 thread_id INT AUTO_INCREMENT PRIMARY KEY,
                 title VARCHAR(100) NOT NULL,
                 user_id INT,
+                Category VARCHAR(50) NOT NULL,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (user_id) REFERENCES users(user_id)
             );

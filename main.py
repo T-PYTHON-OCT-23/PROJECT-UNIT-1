@@ -58,19 +58,22 @@ def login():
         password = getpass.getpass("Enter your password: ")
         password = hashlib.sha256(password.encode()).hexdigest()[:50]
         user = User.login(username, password)
-        newUser = User(user[2], user[2], user[3])
-        newUser.setId(user[0])
-        if user:
-            print(Back.GREEN + f"Logged in as user ID {newUser.getUserId()}")
-            return user
-        else:
+        if user == None:
             print(Back.RED + "Invalid username or password. Please try again.")
+        else:
+            newUser = User(user[2], user[2], user[3])
+            newUser.setId(user[0])
+            if user:
+                print(Back.GREEN + f"Logged in as user ID {newUser.getUserId()}")
+                return user
+            else:
+                print(Back.RED + "Invalid username or password. Please try again.")
 
 def addThread(user):
     content = input("Enter the content of the thread: ")
     title = input("Enter the title of the thread: ")
     Category= input("Enter the category of the thread: ")
-    thread = Thread(title, content,Category, user)
+    thread = Thread(title=title, content=content, author=user[0], category=Category)
     print(Back.GREEN + f"Created a new thread with thread ID {thread.thread_id}")
     
 def addComment(user):

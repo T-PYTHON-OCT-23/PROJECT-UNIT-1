@@ -16,6 +16,7 @@ class Thread:
         self.category = category
         self.ThreadId=addThread(title,category,author)
         addThreadCategory(category, self.ThreadId)
+        category = catgory(category)
         category.add_thread(self)
         addToMongo(self.ThreadId, title, content,category, author)
 
@@ -79,12 +80,14 @@ class catgory:
 
 def Initialize():
     list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"]    
-    for i in list_of_categories:
-        if i not in get_all_categories():
+    try:
+        for i in list_of_categories:
+            if i not in get_all_categories():
+                catgory(i)
+    except:
+        for i in list_of_categories:
             catgory(i)
-        
     
-    
-    
+
     
 Initialize()
