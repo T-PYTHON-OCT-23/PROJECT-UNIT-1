@@ -1,4 +1,4 @@
-from property_manager import PropertyManager
+from property_manager_class import PropertyManager
 from prpoerty_data_class import PropertyData
 from tabulate import *
 from art import *
