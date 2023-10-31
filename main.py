@@ -3,11 +3,13 @@ from user import User
 from mongo import getThreadsById
 from post import Thread, Comment
 from art import tprint
-from colorama import Back
+from colorama import Back , init
 import hashlib
 import re
 import getpass
 
+# Initialize Colorama
+init(autoreset=True) 
 
 # lambda for password validation
 
