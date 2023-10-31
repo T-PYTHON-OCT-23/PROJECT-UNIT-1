@@ -30,7 +30,7 @@ def getThreads(self, category):
     collection = self.db[category]
     return collection.find({})
 
-def getThredsById(self, category, id):
+def getThreadsById(self, category, id):
     collection = self.db[category]
     return collection.find({"thread_id": id})
 

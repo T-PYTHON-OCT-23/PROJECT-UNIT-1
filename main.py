@@ -1,6 +1,6 @@
 from db import getThreadsInCategory, get_all_categories, addCategory
 from user import User
-from mongo import getThredsById
+from mongo import getThreadsById
 from post import Thread, Comment
 from art import tprint
 from colorama import Back
@@ -82,6 +82,7 @@ def addComment(user):
 def main():
     tprint("TECH", font='block')
     tprint("FORUM", font='block')
+    user = None  # Initialize the user variable
 
     while True:
         print("\nMenu:")
@@ -91,6 +92,7 @@ def main():
         print("4. Login")
         print("5. Add Thread")
         print("6. Add Comment")
+        print("7. Add Category")  # Added option to add a category
         print("0. Exit")
 
         choice = input("Enter your choice: ")
@@ -100,21 +102,17 @@ def main():
         elif choice == "2":
             category_name = input("Enter the name of the category: ")
             printAllThreads(category_name)
-            input_=input("Enter the thread ID: ")
-            getThredsById(category_name,input_)            
+            input_ = input("Enter the thread ID: ")
+            getThreadsById(category_name, input_)  # Corrected the function name
         elif choice == "3":
             registerUser()
         elif choice == "4":
             user = login()
         elif choice == "5":
-            try:
                 if user:
                     addThread(user)
                 else:
                     print(Back.RED + "Please log in first.")
-            except Exception as e:
-                print(Back.RED + "Please log in first.")
-                print(e)
         elif choice == "6":
             try:
                 if user:

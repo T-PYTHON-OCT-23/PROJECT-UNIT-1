@@ -201,7 +201,7 @@ def get_all_categories():
         cursor.execute("SELECT category_name FROM categories")
         categories = [row[0] for row in cursor.fetchall()]
         cursor.close()
-        return categories , getCategories(categories)
+        return categories
     except mysql.connector.Error as err:
         print(f"Error: {err}")
         return None

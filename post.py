@@ -1,4 +1,4 @@
-from db import addComment , addThread  , removeComment , addThreadCategory , addCategory
+from db import addComment , addThread  , removeComment , addThreadCategory , addCategory , get_all_categories
 from mongo import removeThread , addToMongo
 class Thread:
     def __init__(self, title, content,category, author):
@@ -77,7 +77,14 @@ class catgory:
     def get_threads(self):
         return self.threads
 
-list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"]
+def Initialize():
+    list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"]    
+    for i in list_of_categories:
+        if i not in get_all_categories():
+            catgory(i)
+        
     
-for i in list_of_categories:
-    category = catgory(i)
+    
+    
+    
+Initialize()
