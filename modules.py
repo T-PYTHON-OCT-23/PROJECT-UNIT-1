@@ -34,6 +34,18 @@ def get_valid_input(prompt, validator_func):
 
 def is_email_and_password_valid(email,password):
     users = []
-    with open("users.json", "a+", encoding="utf-8") as file:
-        users = json.load(file)
-    pass
+    with open("users.json", "r", encoding="utf-8") as file:
+        content = file.read()
+        users = json.loads(content)
+    
+    login_successful = False
+    for user in users:
+        if email in user and user[email]['user_password'] == password:
+            login_successful = True
+            return True
+
+    if login_successful:
+        print("Login successful")
+    else:
+        print("Invalid email or password")
+        

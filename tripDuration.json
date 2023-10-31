@@ -1,0 +1,22 @@
+[{
+    "almasif":{
+        "noura":{
+            "to":"Noura Prince University",
+            "cost":15
+        },
+        "kfu":{
+            "to":"King Faisal University",
+            "cost":30
+        }
+    },
+    "Aldryiah":{
+        "kfu":{
+            "to":"King Faisal University",
+            "cost":10
+        },
+        "noura":{
+            "to":"Noura Prince University",
+            "cost":50
+        }
+    }
+}]
