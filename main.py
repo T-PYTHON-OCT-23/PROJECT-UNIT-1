@@ -1,4 +1,4 @@
-from modules import is_valid_email, is_valid_name,is_valid_password,get_valid_input,is_email_and_password_valid
+from modules import *
 import json
 from payment import Payment 
 
@@ -35,9 +35,7 @@ while trips:
                 if count <= 2:
                     print(''' Note: your data is belong to you we insure you data privacy and we will not share it with other 3rd party''')
                 count +=1
-                print(''' guid-lines :
-            1) If you are new start with us.
-            2) If you have an account. ''')
+                print_func()
                 user_input = int(input("please enter number here: "))
                 if user_input < 0:
                     print("Enter only positive number")
@@ -53,7 +51,6 @@ while trips:
     else:
         print("Note: For login email and password are requierd!")
         user_input = 2
-        print("#"*50)
 
     if user_input == 1:
         print(''' These feilds are requierd about personal information.
@@ -64,25 +61,16 @@ while trips:
         user_email = get_valid_input("Email: ", is_valid_email)
         user_password = get_valid_input("Password: ", is_valid_password)
         print("Registration Successfully!")
-        user_form = {
-            user_email:{
-                "user_name":user_name,
-                "user_password":user_password
-            }
-        }
+        user_form = add_user_form(user_email,user_name,user_password)
         users.append(user_form)
-        with open("users.json", "w", encoding="utf-8") as file:
-            content = json.dumps(users, indent=4)
-            file.write(content)
+        add_users(users)
         registration = False
-        #Finished Here ------------------------------
     elif user_input == 2:
         left = 5
         while login:
             user_email_input = input("Email: ") 
             user_password_input = input("Password: ")
-            #is_email_and_password_valid(user_email_input,user_password_input)
-            if is_email_and_password_valid(user_email_input,user_password_input):
+            if is_email_and_password_valid(user_email_input,user_password_input,users):
                 email_user = user_email_input
                 break
             else:
@@ -92,15 +80,11 @@ while trips:
                     login = False
         else:
             break
-        print("#"*50)
         #start --- 
         l = True
         while l:
             print("Welcome to The Cycle Bark")
-            print(''' Menue: 
-            1- To view the pathes you so you can pick a trips.
-            2- To view history of your trips and payed it.
-            3- To exit the application.''')
+            print_function()
             try:
                 user_input = int(input("Enter number here: "))
                 if user_input < 0:
@@ -112,14 +96,7 @@ while trips:
             if user_input == 1:
                 loops = True
                 while loops:
-                    for idx ,n in enumerate(trips_duration):
-                        print(f''' Trips duration:
-                    {idx+1}- From Almasif to {n['almasif']['noura']['to']}, it will cost you {n['almasif']['noura']['cost']}
-                    {idx+2}- From Almasif to {n['almasif']['kfu']['to']}, it will cost you {n['almasif']['kfu']['cost']}
-                    {idx+3}- From Aldryiah to {n['Aldryiah']['noura']['to']}, it will cost you {n['Aldryiah']['noura']['cost']}
-                    {idx+4}- From Aldryiah to {n['Aldryiah']['kfu']['to']}, it will cost you {n['Aldryiah']['kfu']['cost']}
-                            ''')
-                    print("Enter '404' to exit the application.")
+                    print_trip_duration(trips_duration)
                     try:
                         user_choise_trip = int(input("Enter your trip number: "))
                         if user_choise_trip < 0:
@@ -130,19 +107,10 @@ while trips:
                         input()
                     if user_choise_trip == 1:
                         # travile animation if i want
-                        trip_format = {
-                            email_user:{
-                                "from":"almasif",
-                                "to":"noura",
-                                "cost":trips_duration[0]['almasif']['noura']['cost'],
-                                "is_payed":"Not payed it yet"
-                            }
-                        }
+                        trip_format = add_trip1(email_user,trips_duration)
                         history_trips.append(trip_format)
                         print("Enjoy your trip <3")
-                        with open("history.json", "w", encoding="utf-8") as file:
-                            content = json.dumps(history_trips, indent=4)
-                            file.write(content)
+                        history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
                         if exits == "exit":
                             #trips = False
@@ -150,19 +118,10 @@ while trips:
                         
                     elif user_choise_trip == 2:
                         # travile animation if i want
-                        trip_format = {
-                            email_user:{
-                                "from":"almasif",
-                                "to":"kfu",
-                                "cost":trips_duration[0]['almasif']['kfu']['cost'],
-                                "is_payed":"Not payed it yet"
-                            }
-                        }
+                        trip_format = add_trip2(email_user,trips_duration)
                         history_trips.append(trip_format)
                         print("Enjoy your trip <3")
-                        with open("history.json", "w", encoding="utf-8") as file:
-                            content = json.dumps(history_trips, indent=4)
-                            file.write(content)
+                        history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
                         if exits == "exit":
                             #trips = False
@@ -170,19 +129,10 @@ while trips:
 
                     elif user_choise_trip == 3:
                         # travile animation if i want
-                        trip_format = {
-                            email_user:{
-                                "from":"Aldryiah",
-                                "to":"noura",
-                                "cost":trips_duration[0]['Aldryiah']['noura']['cost'],
-                                "is_payed":"Not payed it yet"
-                            }
-                        }
+                        trip_format = add_trip3(email_user,trips_duration)
                         history_trips.append(trip_format)
                         print("Enjoy your trip <3")
-                        with open("history.json", "w", encoding="utf-8") as file:
-                            content = json.dumps(history_trips, indent=4)
-                            file.write(content)
+                        history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
                         if exits == "exit":
                             #trips = False
@@ -190,19 +140,10 @@ while trips:
 
                     elif user_choise_trip == 4:
                         # travile animation if i want
-                        trip_format = {
-                            email_user:{
-                                "from":"Aldryiah",
-                                "to":"kfu",
-                                "cost":trips_duration[0]['Aldryiah']['kfu']['cost'],
-                                "is_payed":"Not payed it yet"
-                            }
-                        }
+                        trip_format = add_trip4(email_user,trips_duration)
                         history_trips.append(trip_format)
                         print("Enjoy your trip <3")
-                        with open("history.json", "w", encoding="utf-8") as file:
-                            content = json.dumps(history_trips, indent=4)
-                            file.write(content)
+                        history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
                         if exits == "exit":
                             #trips = False
@@ -219,10 +160,7 @@ while trips:
                     for u in history_trips:
                         if email_user in u:
                             user_trips_history.append(u)
-                    print(''' 
-                1) If you want to list all your trip.
-                2) If you want to calculate all you bills and pay it. 
-                3) If you want to exit the application.  ''')
+                    print_info()
                     choise = int(input("Enter the number you have choise it: "))
                     if choise == 1:
                         for n in user_trips_history:
@@ -230,13 +168,8 @@ while trips:
                     elif choise ==2:
                         list_not_payed = []
                         total_cost = 0
-                        for index, n in enumerate(user_trips_history):
-                            if n[email_user]['is_payed'] == "Not payed it yet":
-                                list_not_payed.append(index)
-
-                        for idx, n in enumerate(list_not_payed):
-                            total_cost += user_trips_history[n][email_user]['cost']
-                            print(f"{idx+1}- You didn't payed trips from {user_trips_history[n][email_user]['from']} and you should pay {user_trips_history[n][email_user]['cost']} for it. ")
+                        list_not_payed = add_trip_not_payed_to_list(user_trips_history,email_user,list_not_payed)
+                        total_cost = list_trip_not_payed(list_not_payed,user_trips_history,email_user,total_cost)
                         
                         print(f"And your total cost is {total_cost}")
                         pay_it = input("Enter 'y' to pay it or 'n' to exit the application: ")
@@ -247,10 +180,7 @@ while trips:
                                 for n in list_not_payed:
                                     user_trips_history[n][email_user]['cost'] = 0
                                     user_trips_history[n][email_user]['is_payed'] = "PAYED"
-
-                                with open("history.json", "w", encoding="utf-8") as file:
-                                    content = json.dumps(history_trips, indent=4)
-                                    file.write(content)
+                                history_write(history_trips)
                             else:
                                 break
                         if pay_it == "n":
@@ -258,8 +188,6 @@ while trips:
                     elif choise ==3:
                         break
             elif user_input == 3:
-                with open("users.json", "w", encoding="utf-8") as file:
-                    content = json.dumps(users, indent=4)
-                    file.write(content)
+                add_users(users)
                 trips = False
                 l = False
