@@ -12,32 +12,25 @@
 - Use some form of Error Handling .
 - Organize Your Code into modules & (or packages)
 
-## Example Project :  An online Grocery Store :
+## Example Project :  An online Restaurant :
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview : The online restaurant has a menu where the customer can choose the additives to order and view the order. 
 
 #### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+- Request order. 
+- View the order info as list (additives, price)
+- Fill in my address and information of the costumer .
+- Evaluation the service.
 
 
 
 #### Usage :
  Explain to the user how to use your project . 
  for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
+ - Choose from the menu there are many options .
+ - Fill the additives in your order .
+ - type your information to delivery.
+ - type Evaluation the service. 
  - and so on...
 
 
