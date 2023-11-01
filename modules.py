@@ -8,6 +8,9 @@ with open("users.json", "r", encoding="utf-8") as file:
 
 def is_valid_email(email):
     pattern = r'^[\w\.-]+@[\w\.-]+(\.[\w]+)+$'
+    for user in users:
+        if email in user:
+            return print("please enter a valid email")
     if re.match(pattern, email):
         return True
     return print("please enter a valid email")
