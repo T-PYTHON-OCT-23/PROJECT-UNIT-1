@@ -65,6 +65,7 @@ def create_tables(conn):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS comments (
                 comment_id INT AUTO_INCREMENT PRIMARY KEY,
+                mongo_id INT,
                 content TEXT NOT NULL,
                 user_id INT,
                 thread_id INT,
@@ -84,15 +85,6 @@ def create_tables(conn):
             );
         """)
 
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS thread_categories (
-                thread_category_id INT AUTO_INCREMENT PRIMARY KEY,
-                thread_id INT,
-                category_id INT,
-                FOREIGN KEY (thread_id) REFERENCES threads(thread_id),
-                FOREIGN KEY (category_id) REFERENCES categories(category_id)
-            );
-        """)
 
         conn.commit()
         cursor.close()
@@ -131,19 +123,6 @@ def addThread(title, Category, user_id):
     except mysql.connector.Error as err:
         print(f"Error: {err}")
 
-# Add a thread-category association
-def addThreadCategory(thread_id, category_id):
-    conn = connect_to_database()
-    try:
-        cursor = conn.cursor()
-        query = "INSERT INTO thread_categories (thread_id, category_id) VALUES (%s, %s)"
-        values = (thread_id, category_id)
-        cursor.execute(query, values)
-        conn.commit()
-        cursor.close()
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-
 # Remove a thread from the database
 def removeThread(thread_id):
     conn = connect_to_database()
@@ -169,40 +148,17 @@ def removeComment(comment_id):
         print(f"Error: {err}")
 
 # Add a comment to the database
-def addComment(thread_id, content, user_id):
+def addComment(thread_id, MongoId, user_id):
     conn = connect_to_database()
     try:
         cursor = conn.cursor()
-        query = "INSERT INTO comments (thread_id, content, user_id) VALUES (%s, %s, %s)"
-        values = (thread_id, content, user_id)
+        query = "INSERT INTO comments (thread_id, mongo_id, user_id) VALUES (%s, %s, %s)"
+        values = (thread_id, MongoId, user_id)
         cursor.execute(query, values)
         conn.commit()
         cursor.close()
     except mysql.connector.Error as err:
         print(f"Error: {err}")
-
-# Retrieve threads in a specific category
-def getThreadsInCategory(category_name):
-    conn = connect_to_database()
-    try:
-        cursor = conn.cursor()
-        query = """
-            SELECT t.thread_id, t.title, t.created_at, u.username
-            FROM threads t
-            JOIN users u ON t.user_id = u.user_id
-            JOIN thread_categories tc ON t.thread_id = tc.thread_id
-            JOIN categories c ON tc.category_id = c.category_id
-            WHERE c.category_name = %s
-        """
-        cursor.execute(query, (category_name,))
-
-        threads = cursor.fetchall()
-        cursor.close()
-
-        return threads
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-        return None  # Return None to indicate an error
 
 # Get a list of all categories
 def get_all_categories():
@@ -244,6 +200,20 @@ def addCategory(category_name):
         return category_id
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+    
+def getUsernameById(user_id):
+    conn = connect_to_database()
+    try:
+        cursor = conn.cursor()
+        query = "SELECT username FROM users WHERE user_id = %s"
+        cursor.execute(query, (user_id,))
+        username = cursor.fetchone()
+        cursor.close()
+        return str(username)
+    except mysql.connector.Error as err:
+        print(f"Error in getUsernameById: {err}")
+        return None    
+    
     
 if __name__ == "__main__":
     conn = connect_to_database()

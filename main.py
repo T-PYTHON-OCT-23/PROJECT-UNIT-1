@@ -1,6 +1,6 @@
-from db import getThreadsInCategory, get_all_categories, addCategory
+from db import get_all_categories, addCategory , getUsernameById
 from user import User
-from mongo import getThreadsById
+from mongo import getThreadById , getThreadsInCategory
 from post import Thread, Comment
 from art import tprint
 from colorama import Back , init
@@ -28,10 +28,16 @@ def allCategories():
 def printAllThreads(category_name):
     threads = getThreadsInCategory(category_name)
     if threads:
-        for thread in threads:
-            print(f"Thread ID: {thread[0]}, Title: {thread[1]}, Content: {thread[2]}, Created At: {thread[3]}, Author: {thread[4]}")
+        for thread in threads:  
+            print("Thread ID:", thread['thread_id'])
+            print("Title:", thread['title'])
+            print("Content:", thread['content'])
+            print("Category:", thread['category'])
+            print("Author:", getUsernameById(thread['author']).replace("('","").replace("',)","")) # ('bader',) -> bader
+            return True
     else:
         print("No threads found in the specified category.")
+        return False
 
 def registerUser():
     while True:
@@ -76,7 +82,7 @@ def addThread(user):
     title = input("Enter the title of the thread: ")
     Category= input("Enter the category of the thread: ")
     thread = Thread(title=title, content=content, author=user[0], category=Category)
-    print(Back.GREEN + f"Created a new thread with thread ID {thread.thread_id}")
+    print(Back.GREEN + f"Created a new thread with thread ID {thread.ThreadId}")
     
 def addComment(user):
     content = input("Enter the content of the comment: ")
@@ -106,9 +112,10 @@ def main():
             allCategories()
         elif choice == "2":
             category_name = input("Enter the name of the category: ")
-            printAllThreads(category_name)
-            input_ = input("Enter the thread ID: ")
-            getThreadsById(category_name, input_)  # Corrected the function name
+            if (printAllThreads(category_name)):
+                input_ = input("Enter the thread ID: ")
+                print(getThreadById(category_name, input_)['content'])
+    
         elif choice == "3":
             registerUser()
         elif choice == "4":

@@ -18,7 +18,7 @@ class Thread:
         addThreadCategory(category, self.ThreadId)
         category = catgory(category)
         category.add_thread(self)
-        addToMongo(self,self.ThreadId, title, content,category, author)
+        addToMongo(self.ThreadId, title, content,category, author)
 
 
     def add_comment(self,ThreadID, content, author):
@@ -77,7 +77,8 @@ class catgory:
          return self.__categoryId
     def get_threads(self):
         return self.threads
-
+    def get_name(self):
+        return self.name
 def Initialize():
     list_of_categories = ["Stack Overflow", "GitHub Community", "Reddit Tech Subreddits", "TechCrunch Community"] # List of categories
     allMongos=getAllCategories()  

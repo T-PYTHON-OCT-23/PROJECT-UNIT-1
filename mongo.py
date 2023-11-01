@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
+import datetime
 load_dotenv()
 
 cluster = MongoClient(os.getenv('API_MONGO'))        #cluster name
@@ -13,12 +14,14 @@ def addToMongo(thread_id, title, content, category, author):
         "thread_id": thread_id,
         "title": title,
         "content": content,
-        "category": category,
+        "created_at": datetime.datetime.now(),
+        "category": category.get_name(),
         "author": author
+        
     }
 
     # Insert the document into a MongoDB collection
-    collection = db[category]
+    collection = db[category.get_name()]
     collection.insert_one(thread_data)
 
 def CreateCategories(category):
@@ -28,9 +31,11 @@ def getThreads(category):
     collection = db[category]
     return collection.find({})
 
-def getThreadsById(category, id):
+
+def getThreadById(category, thread_id):
     collection = db[category]
-    return collection.find({"thread_id": id})
+    return collection.find_one({"thread_id": int(thread_id)})
+
 
 def removeThread(category, id):
     collection = db[category]
@@ -38,3 +43,7 @@ def removeThread(category, id):
 
 def getAllCategories():
     return db.list_collection_names()
+
+def getThreadsInCategory(category):
+    collection = db[category]
+    return list(collection.find())
