@@ -1,8 +1,8 @@
 import json
 import random
 from drawings import drawings
-from words import words
-
+from words import *
+from tabulate import *
 class hangman:
     
     def __init__(self):
@@ -13,7 +13,6 @@ class hangman:
                 self.leaderboard= json.loads(file.read())
         except Exception as e:
             print(e)
-        self.leaderboard=sorted(self.leaderboard, key=lambda x: x['score'], reverse=True)
         
     def choose_word(self):
         word=random.choice(words)
@@ -89,11 +88,18 @@ class hangman:
             return True
         
     def leaderboard_print(self):
-        print("this is the leaderboard")
+        self.leaderboard=sorted(self.leaderboard, key=lambda x: x['score'], reverse=True)
+        leaderboard=[]
         for index, i in enumerate(self.leaderboard):
-            print(f"""{index+1}- {i["username"]}    ----------------------   {i["score"]}""")
+            leaderboard.append([index+1,i["username"],i["score"]])
+        print(tabulate(leaderboard,headers=["Rank","Name","Score"],tablefmt="fancy_grid",numalign="center",stralign="center"))
     
-
+    def add_word(self,word):
+        append_word(word)
+        
+    def list_words():
+        print(words)
+    
     def play(self):
         self.score=0
         self.setup()

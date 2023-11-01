@@ -50,3 +50,6 @@ words=[
 "mystery",
 "fantasy"
 ]
+
+def append_word(word):
+    words.append(word)
