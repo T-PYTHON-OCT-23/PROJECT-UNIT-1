@@ -14,14 +14,15 @@
 
 ## Example Project :   Adoption Center :
 
-#### Overview : An application for adopting pets, users can view the available pets, In addition, the user can view the available pets sorted according to the age of the pet, user can adopt a pet and the user can also feed any pet if he wishes to do.. 
+#### Overview : An application for adopting pets, users can view the available pets, In addition, the user can view the available pets sorted according to the age of the pet, user can adopt a pet and the user can also feed any pet if he wishes to do, and user can add pet to adaption center. 
 
 #### As a user I should be able to do the following :
-1. View the list of available pets
-4. View the list of available pets based on age sorting
-2. Adopt a pet from the center
-3. Feed a pet at the center
-5. Exit 
+- View the list of available pets
+- View the list of available pets based on age sorting
+- Adopt a pet from the center
+- Feed a pet at the center
+- Add pet to adaption center
+- Exit from application
 
 
 
@@ -31,7 +32,8 @@
     -Type number 2 to view the list of available pets sorted based on age
     -Type number 3 to adopt a pet from the center, then write the index number for the pet you would like to adopt
     -Type number 4 to feed a pet from the center, then write the index number for the pet you want  to feed
-    -Type number 5 to exit from applecation.
+    -Type number 5 to add pet to adoption center, and then fill the required.
+    -Type number 6 to exit from application.
 
 
 ### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 

@@ -1,6 +1,6 @@
 from adaptionCenter import *
 from art import *
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 
 adoption_center = AdoptionCenter()
@@ -48,7 +48,8 @@ while True:
         print("2- List available pets sorted by age")
         print("3- Adopt a pet")
         print("4- Feed a pet")
-        print("5- Exit")
+        print("5- Add a pet to Adoption Center")
+        print("6- Exit")
 
         choice = input("Enter your choice: ")
    
@@ -60,7 +61,6 @@ while True:
         elif choice == "2":
 
             newListSortedByAge = sorted(adoption_center.availablePets , key=lambda pet: pet.age)
-            #newListSortedByAge = adoption_center.availablePets.sort(key=lambda pet: pet.age)
             for pet in newListSortedByAge:
                 print(f"Name: {pet.name}, Type: {pet.petType}, Age: {pet.age} years, Food: {pet.food}")
                 print(pet.picture)
@@ -70,8 +70,7 @@ while True:
             try:
                 petIndex = int(input("Enter the number of the pet to adopt: "))
                 adoptedPet = adoption_center.adoptPet(petIndex)
-                #if adoptedPet:
-                 #print(Fore.RED,f"11You adopted {adoptedPet.name} the {adoptedPet.petType}! He is now your pet.")
+                
 
             except Exception as e:
                 print(Fore.RED ,"Invalid entry, Please try again and enter number from list.")
@@ -87,7 +86,46 @@ while True:
                print(Fore.RED,"Invalid entry, Please try again and enter number from list.")
                print(Style.RESET_ALL)
                
+        
         elif choice == "5":
+           
+            name = input("Enter the pet's name: ")
+            typePet = input("Enter the type of pet (Cat, Dog): ")
+            age = int(input("Enter the pet's age: "))
+            food = input("Enter pet food: ")
+
+            for item in adoption_center.availablePets:
+              
+               if typePet == "cat":
+                    image1 = """
+                
+                            /\_/\  
+                           ( o.o ) 
+                            > ^ <
+                                """
+                    print(f"Name: {name}, Type: {typePet}, Age: {age} years, Food: {food}")
+                    print(image1)
+                    print(Fore.GREEN,f"{name} has been added successfully")
+                    print(Style.RESET_ALL)
+                    adoption_center.addPet(Pet(name,typePet,age,food, image1))
+                    break
+               
+               elif typePet == "dog":
+                     image1 = """
+                              / \__
+                             (    @\____
+                             /         O
+                            /   (_____/
+                           /_____/   U
+                             """
+                     print(f"Name: {name}, Type: {typePet}, Age: {age} years, Food: {food}")
+                     print(image1)
+                     print(Fore.GREEN,f"{name} has been added successfully")
+                     print(Style.RESET_ALL)
+                     adoption_center.addPet(Pet(name,typePet,age,food,image1))
+                     break
+
+        elif choice == "6":
            
             print(Fore.LIGHTBLUE_EX,"Goodbye! Thanks for visiting our Adoption Center!\n")
             print(Style.RESET_ALL)
