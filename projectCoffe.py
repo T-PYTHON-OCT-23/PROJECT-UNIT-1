@@ -1,24 +1,26 @@
 from colorama import Fore, Back, Style
 
 class DispenserCoffe:
-    def __init__(self,cost,number_of_items) -> None:
+    def __init__(self, name, cost,number_of_items) -> None:
+        self.name = name
         self.cost=cost
         self.number_of_items=number_of_items
 
-    def get_no_of_items(self):
-        return self.number_of_items
-
     def get_cost(self):
         return self.cost
+    
+    def get_name(self):
+        return self.name
 
     def make_sale(self):
         if self.number_of_items > 0:
             self.number_of_items -= 1
         else:
             raise Exception("This Coffe is not available now.")
+    
         
 
-def sell_product(product, counter): 
+def sell_product(product): 
     money=0
     try:
         if product.get_cost() > 0 :  
@@ -32,7 +34,7 @@ def sell_product(product, counter):
                 print(Fore.BLUE + "Please take your drink" + Style.RESET_ALL)
           
             elif money > product.get_cost():
-                print(f"You have remaining of {product.get_cost() - money} Riyals for you to use!")
+                print(f"You have remaining of { money - product.get_cost()} Riyals for you to use!")
                 print(Back.GREEN +"Do you want to continue?" + Style.RESET_ALL)
                 print(Fore.BLUE +"(1) Yes"+Style.RESET_ALL)
                 print(Fore.RED + "(2) No"+Style.RESET_ALL)
@@ -48,6 +50,7 @@ def sell_product(product, counter):
     except Exception as e:
         print(Fore.RED + str(e) + Style.RESET_ALL)
         print(input("If you want a menu, click Enter"))
+
    
 
 
