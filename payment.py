@@ -1,3 +1,5 @@
+import beepy
+
 class Payment:
     def __init__(self,email:str,is_payed:int) -> None:
         self.is_paid = is_payed

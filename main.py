@@ -1,28 +1,23 @@
 from modules import *
-import json
 from payment import Payment 
-
-
+from colorama import Fore, Back, Style
 users = []
 history_trips = []
 email_user = "None"
-# password_user = "None"
 trips_duration = []
 
+
 try:
-    with open("users.json", "r", encoding="utf-8") as file:
-        content = file.read()
-        users = json.loads(content)
-    with open("history.json", "r", encoding="utf-8") as file:
-        content = file.read()
-        history_trips = json.loads(content)
-    with open("tripDuration.json", "r", encoding="utf-8") as file:
-        content = file.read()
-        trips_duration = json.loads(content)
+    users = read_user()
+    history_trips = read_history()
+    trips_duration = read_trip
 except Exception as e:
     print(e)
 
-print("Welcome to The Cycle Bark")
+
+
+
+print("Welcome to Cycle Ride Service")
 trips = True
 registration = True
 login = True
@@ -37,6 +32,7 @@ while trips:
                 count +=1
                 print_func()
                 user_input = int(input("please enter number here: "))
+                sound()
                 if user_input < 0:
                     print("Enter only positive number")
                     input("Press Enter to continue")
@@ -49,18 +45,15 @@ while trips:
                 print("Enter only a valid number")
                 input("Press Enter to continue")
     else:
-        print("Note: For login email and password are requierd!")
+        print_note()
         user_input = 2
 
     if user_input == 1:
-        print(''' These feilds are requierd about personal information.
-    1) User name
-    2) Email
-    3) Password''')
+        print_information()
         user_name = get_valid_input("Full name: ", is_valid_name)
         user_email = get_valid_input("Email: ", is_valid_email)
         user_password = get_valid_input("Password: ", is_valid_password)
-        print("Registration Successfully!")
+        print_color()
         user_form = add_user_form(user_email,user_name,user_password)
         users.append(user_form)
         add_users(users)
@@ -74,7 +67,7 @@ while trips:
                 email_user = user_email_input
                 break
             else:
-                print(f"Try Again!, you have {left} left")
+                print_left(left)
                 left -= 1
                 if left < 0:
                     login = False
@@ -87,6 +80,7 @@ while trips:
             print_function()
             try:
                 user_input = int(input("Enter number here: "))
+                sound()
                 if user_input < 0:
                     print("Enter only positive number")
                     input()
@@ -99,6 +93,7 @@ while trips:
                     print_trip_duration(trips_duration)
                     try:
                         user_choise_trip = int(input("Enter your trip number: "))
+                        sound()
                         if user_choise_trip < 0:
                             print("Enter only positive number")
                             input()
@@ -109,9 +104,10 @@ while trips:
                         # travile animation if i want
                         trip_format = add_trip1(email_user,trips_duration)
                         history_trips.append(trip_format)
-                        print("Enjoy your trip <3")
+                        trip_color()
                         history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
+                        sound()
                         if exits == "exit":
                             #trips = False
                             loops = False
@@ -120,9 +116,10 @@ while trips:
                         # travile animation if i want
                         trip_format = add_trip2(email_user,trips_duration)
                         history_trips.append(trip_format)
-                        print("Enjoy your trip <3")
+                        trip_color()
                         history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
+                        sound()
                         if exits == "exit":
                             #trips = False
                             loops = False
@@ -131,9 +128,10 @@ while trips:
                         # travile animation if i want
                         trip_format = add_trip3(email_user,trips_duration)
                         history_trips.append(trip_format)
-                        print("Enjoy your trip <3")
+                        trip_color()
                         history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
+                        sound()
                         if exits == "exit":
                             #trips = False
                             loops = False
@@ -142,9 +140,10 @@ while trips:
                         # travile animation if i want
                         trip_format = add_trip4(email_user,trips_duration)
                         history_trips.append(trip_format)
-                        print("Enjoy your trip <3")
+                        trip_color()
                         history_write(history_trips)
                         exits = input("Enter 'exit' to exit or anything to continue: ")
+                        sound()
                         if exits == "exit":
                             #trips = False
                             loops = False
@@ -162,6 +161,7 @@ while trips:
                             user_trips_history.append(u)
                     print_info()
                     choise = int(input("Enter the number you have choise it: "))
+                    sound()
                     if choise == 1:
                         for n in user_trips_history:
                             print(f"Your last trips where: from {n[email_user]['from']} to {n[email_user]['to']} an it cost you {n[email_user]['cost']} and you {n[email_user]['is_payed']}")
@@ -176,6 +176,7 @@ while trips:
                         consumer = Payment(email_user,total_cost)
                         if pay_it == "y":
                             if consumer.is_it_payed(total_cost):
+                                paid()
                                 print("Paid successfully! Thank you and visit us again <3")
                                 for n in list_not_payed:
                                     user_trips_history[n][email_user]['cost'] = 0
@@ -189,5 +190,6 @@ while trips:
                         break
             elif user_input == 3:
                 add_users(users)
+                outro()
                 trips = False
                 l = False
