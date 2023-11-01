@@ -8,7 +8,7 @@ import Weather
 
 text = fontstyle.apply('\nWelcome to Weather Forecast App: \n', 'bold/Italic/WHITE/BLUE_BG')
 print(text)
-Weather.history_search1()
+Weather.location_search()
 while True:
     try:
         choise_number=input(fontstyle.apply('\nPlease choose among these options:\n1-Display the current weather forecast.\n2-Search for the weather forecast in a country or city.\n3-Temperature converter between Fahrenheit and Celsius.\n4-Exist: ', 'bold/Italic/BLUE'))

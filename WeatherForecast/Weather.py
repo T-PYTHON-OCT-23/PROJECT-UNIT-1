@@ -62,8 +62,8 @@ def search_weather_forecast(location):
         output += f"{chalk.green('Temperature')}: {chalk.cyan(temperature)}°C\n"
         output += f"{chalk.green('Feels like')}:{chalk.cyan(feels_like)}°C\n"
         return output
-def history_search1():
-    print(fontstyle.apply('Your last history search is: ','bold/Italic/PURPLE'))
+def location_search():
+    print(fontstyle.apply('Your last location search is: ','bold/Italic/PURPLE'))
     with open("history_search.json", "r", encoding="utf-8") as file:
         content = file.read()
         history_search = json.loads(content)
