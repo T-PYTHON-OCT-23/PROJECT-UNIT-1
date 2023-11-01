@@ -103,7 +103,8 @@ press any key to continue""")
             self.words.append(word)
             with open('words_file.json', 'w') as file:
                 file.write(json.dumps(self.words))
-            input(f"{word} is added to the word list")
+            input(f"""{word} is added to the word list
+press any key to continue""")
 
     def list_words(self):
         for i in self.words:
