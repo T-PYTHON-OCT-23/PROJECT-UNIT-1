@@ -1,5 +1,5 @@
-from db import addComment , addThread  , removeComment , addThreadCategory , addCategory , get_all_categories
-from mongo import removeThread , addToMongo , CreateCategories , getAllCategories
+from db import addThread  , addThreadCategory , addCategory , get_all_categories
+from mongo import removeThread , addToMongo , CreateCategories , getAllCategories , addToCommentsMongo , removeCommentMongo
 class Thread:
     def __init__(self, title, content,category, author):
         """
@@ -21,7 +21,7 @@ class Thread:
         addToMongo(self.ThreadId, title, content,category, author)
 
 
-    def add_comment(self,ThreadID, content, author):
+    def add_comment(self,ThreadId,Category, content, author):
         """
         Add a new comment to the thread.
 
@@ -29,19 +29,19 @@ class Thread:
         :param author: The user who created the comment.
         :return: The created Comment object.
         """
-        comment = Comment(content, author)
+        comment = Comment(ThreadId,Category,content, author)
         self.comments.append(comment)
-        addComment(ThreadID,content,author)
+        addToCommentsMongo(ThreadId,content,Category,author)
         return comment
     
-    def remove_comment(self, comment, user_id=0):
+    def remove_comment(self, ThreadId,content,Category,author,comment, user_id=0):
         if user_id != 0 and not self.moderator:
             raise Exception("You are not a moderator and cannot remove comments")
 
         if self.moderator or user_id == comment.author.user_id:
             if comment in self.comments:
                 self.comments.remove(comment)
-                removeComment(comment.comment_id)  # You should implement this function to remove the comment from the database
+                removeCommentMongo(ThreadId,content,Category,author)  # You should implement this function to remove the comment from the database
             else:
                 raise Exception("Comment not found in the user's list of comments")
         else:
@@ -49,7 +49,7 @@ class Thread:
 
 
 class Comment:
-    def __init__(self, content, author):
+    def __init__(self, ThreadId , Category ,  content, author):
         """
         Initialize a Comment object.
 
@@ -58,6 +58,8 @@ class Comment:
         """
         self.content = content
         self.author = author
+        self.ThreadId=ThreadId
+        self.Category=Category
         
 
 class catgory: 

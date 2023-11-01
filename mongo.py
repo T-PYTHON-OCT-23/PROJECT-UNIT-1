@@ -47,3 +47,32 @@ def getAllCategories():
 def getThreadsInCategory(category):
     collection = db[category]
     return list(collection.find())
+
+
+def addToCommentsMongo(thread_id, content, category, author):
+# Create a document with the data
+    Comment_data = {
+        
+        "thread_id": thread_id,
+        "content": content,
+        "created_at": datetime.datetime.now(),
+        "category": category.get_name(),
+        "author": author
+        
+    }
+
+    # Insert the document into a MongoDB collection
+    CommentToAdd="Comments/"+category.get_name()+"/"+thread_id
+    collection = db[CommentToAdd]
+    collection.insert_one(Comment_data)
+    
+    
+def getComments(category, thread_id):
+    CommentToAdd="Comments/"+category.get_name()+"/"+thread_id
+    collection = db[CommentToAdd]
+    return list(collection.find({}))
+
+def removeCommentMongo(category, id, thread_id):
+    CommentToAdd="Comments/"+category.get_name()+"/"+thread_id
+    collection = db[CommentToAdd]
+    collection.delete_one({"thread_id": id})

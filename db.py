@@ -61,21 +61,6 @@ def create_tables(conn):
             );
         """)
 
-        # Create the comments table
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS comments (
-                comment_id INT AUTO_INCREMENT PRIMARY KEY,
-                mongo_id INT,
-                content TEXT NOT NULL,
-                user_id INT,
-                thread_id INT,
-                category_id INT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES users(user_id),
-                FOREIGN KEY (thread_id) REFERENCES threads(thread_id)
-            );
-        """)
-
         # Create the categories and thread_categories tables
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS categories (
@@ -130,31 +115,6 @@ def removeThread(thread_id):
         cursor = conn.cursor()
         query = "DELETE FROM threads WHERE thread_id = %s"
         cursor.execute(query, (thread_id,))
-        conn.commit()
-        cursor.close()
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-
-# Remove a comment from the database
-def removeComment(comment_id):
-    conn = connect_to_database()
-    try:
-        cursor = conn.cursor()
-        query = "DELETE FROM comments WHERE comment_id = %s"
-        cursor.execute(query, (comment_id,))
-        conn.commit()
-        cursor.close()
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
-
-# Add a comment to the database
-def addComment(thread_id, MongoId, user_id):
-    conn = connect_to_database()
-    try:
-        cursor = conn.cursor()
-        query = "INSERT INTO comments (thread_id, mongo_id, user_id) VALUES (%s, %s, %s)"
-        values = (thread_id, MongoId, user_id)
-        cursor.execute(query, values)
         conn.commit()
         cursor.close()
     except mysql.connector.Error as err:

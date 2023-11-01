@@ -84,11 +84,11 @@ def addThread(user):
     thread = Thread(title=title, content=content, author=user[0], category=Category)
     print(Back.GREEN + f"Created a new thread with thread ID {thread.ThreadId}")
     
-def addComment(user):
+def addComment(user,category):
     content = input("Enter the content of the comment: ")
     thread_id = input("Enter the ID of the thread: ")
-    comment = Comment(thread_id, content, user)
-    print(Back.GREEN + f"Created a new comment with comment ID {comment.comment_id}")
+    Comment(thread_id, category ,content, user)
+    print(Back.GREEN + f"Created a new comment with content {content}")
 
 def main():
     tprint("TECH", font='block')
@@ -128,7 +128,8 @@ def main():
         elif choice == "6":
             try:
                 if user:
-                    addComment(user)
+                    input_ = input("Enter the name of the category: ")
+                    addComment(user, input_)
                 else:
                     print(Back.RED + "Please log in first.")
             except:
