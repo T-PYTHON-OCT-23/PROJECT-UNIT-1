@@ -1,7 +1,6 @@
 import json
 import random
 from drawings_file import drawings
-from words_file import *
 from tabulate import *
 class hangman:
     
@@ -11,11 +10,13 @@ class hangman:
         try:
             with open("leaderboared.json","r",encoding="utf-8") as file:
                 self.leaderboard= json.loads(file.read())
+            with open("words_file.json","r",encoding="utf-8") as file:
+                self.words= json.loads(file.read())
         except Exception as e:
             print(e)
         
     def choose_word(self):
-        word=random.choice(words)
+        word=random.choice(self.words)
         return word
 
     def setup(self):
@@ -95,12 +96,17 @@ class hangman:
         print(tabulate(leaderboard,headers=["Rank","Name","Score"],tablefmt="fancy_grid",numalign="center",stralign="center"))
     
     def append_word(self,word):
-        words.append(word)
-        with open('words_file.json', 'w') as file:
-            file.write(f"words= {words}")
+        if word in self.words:
+            input("""word is already in the list
+press any key to continue""")
+        else:
+            self.words.append(word)
+            with open('words_file.json', 'w') as file:
+                file.write(json.dumps(self.words))
+            input(f"{word} is added to the word list")
 
     def list_words(self):
-        for i in words:
+        for i in self.words:
             print(f"{i}")
     
     def play(self):
