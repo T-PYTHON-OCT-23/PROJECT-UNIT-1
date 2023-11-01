@@ -16,4 +16,3 @@ class Court_Rating:
         '''This method allows you to add a comment to the Court_Rating object'''
         self.comments.append(comment)
 
-

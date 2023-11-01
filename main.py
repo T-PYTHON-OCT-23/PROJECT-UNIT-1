@@ -11,9 +11,9 @@ padel_art=Padel_Court('riyadh',"Padel Art" ,4,True,5)
 padel_loop=Padel_Court('abha',"Padel Loop" ,4,True,5)
 padel_earth=Padel_Court('abha',"Padel Earth" ,4,True,4.3)
 padel_m3=Padel_Court('abha',"Padel M3" ,4,True,5)
-padel_yalla=Padel_Court('alkhobar',"Yalla Padel" ,4,True,2)
+padel_yalla=Padel_Court('alkhobar',"Yalla Padel" ,4,True,4)
 padel_mercure=Padel_Court('alkhobar',"Padel Mercure" ,4,True,1.5)
-padel_tik=Padel_Court('alkhobar',"Tik Padel" ,4,True,0)
+padel_tik=Padel_Court('alkhobar',"Tik Padel" ,4,True,3.4)
 
 court_data ={
     "riyadh":[padel_way,padel_pro,padel_art],
@@ -53,27 +53,41 @@ while True:
             
     elif user_choice =="2":
         print("** Search for court ")
-        city:str = input("Enter a city to search: ").lower()
-        
-        # Call the search method
-        try:
+        while True:
+          city = input("Enter a city to search: ").lower()
+
+          if city in court_data:
             for i in court_data[city]:
-                    print(i.name)
-                    print(Fore.BLUE+"-"*50)
+                print(i.name)
+                print(Fore.BLUE + "-" * 50)
 
             for i, item in enumerate(court_data[city]):
                 print(f"{i}. {item.name}")
-        except:
-            print("wrong vlue")
+            break  # Exit the loop if a valid city is entered
+          else:
+             print("City not found. Please enter a valid city.")
 
-        chosen_court = input("Choose a court by enter the indix number: ")
-        try:
-            if chosen_court.isdigit():
-                selected_court = court_data[city][int(chosen_court)]
-                print(Fore.BLUE+f"You selected: {selected_court.name}")
-        except Exception as e:
-                print("city not found")
-        
+        chosen_court = input("Choose a court by entering the index number: ")
+        valid_choice = False
+        while not valid_choice:
+            try:
+                if chosen_court.isdigit():
+                    chosen_court_index = int(chosen_court)
+                    if chosen_court_index >= 0 and chosen_court_index < len(court_data[city]):
+                        selected_court = court_data[city][chosen_court_index]
+                        print(Fore.BLUE + f"You selected: {selected_court.name}")
+                        valid_choice = True
+                    else:
+                        print("Invalid court index. Please choose a valid index.")
+                else:
+                    print("Invalid input. Please enter a valid index.")
+            except Exception as e:
+                print("An error occurred: " + str(e))
+            
+            if not valid_choice:
+                # Prompt the user to enter the index again
+                chosen_court = input("Choose a court by entering the index number: ")
+
         while True:
              print(Fore.BLUE+"** CHOSE NUMBER **")
              print(Fore.BLUE+"1-add rate ")
@@ -107,9 +121,10 @@ while True:
                 filtered_courts_list = [court for city_courts in court_data.values() for court in city_courts if filter_condition(court)]
                 # Print the filtered courts
                 if filtered_courts_list:
-                    print(Fore.GREEN+"Courts with a rating greater than or equal to 4.0:")
+                    print(Fore.GREEN+"Courts with a rating greater than or equal to 4.0:\n")
                     for court in filtered_courts_list:
                         court.court_info()
+                        print(Fore.GREEN + "-" * 50)
                 else:
                     print(Fore.BLUE+"No courts found with a rating greater than or equal to 4.0.")
 
