@@ -1,4 +1,4 @@
-from Online_escape_room import start_the_program, display_the_menu
+from online_escape_room import start_the_program, display_the_menu
 from art import *
 from colorama import Fore, Back, Style
 import colorama

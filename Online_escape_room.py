@@ -145,7 +145,7 @@ def start_the_program():
 #Display menu: play again / display A&Q / exit. 
 def display_the_menu():
     while True:
-        print("-*-"*30)
+        print("-*-"*35)
         print("Do you want to play again?")
         user_choice = input("-Type \033[34m1\033[0m for Yes\n-Type \033[36m2\033[0m for display information about Q&A\n-Type \033[35m3\033[0m for exit\n Choose an option:")
         if user_choice == '1':
