@@ -12,33 +12,33 @@
 - Use some form of Error Handling .
 - Organize Your Code into modules & (or packages)
 
-## Example Project :  An online Grocery Store :
+## Hangman Game !
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview : Hangman is a popular word-guessing game that is typically played by two or more players. The game is often used as a word puzzle for educational and entertainment purposes. 
 
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+#### As a user I should be able to do the following :
+- Play the game.
+- View the drawing each time i guess a letter.
+- View the used letters after each guess.
+- View the leaderboard.
+- View the word list.
+- Add a new word to the list.
+
 
 
 
 #### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+ - type 1 to play the game 
+ - you should guess one letter each time 
+ - if the letter is correct it will show 
+ - if it is a wrong letter the drawing will advance to the next level
+ - if you fail to guess the word in 5 tries you lose 
+ - the word is choosing randomly from a word list
+ - type 2 to view the leaderboard 
+ - type 3 to view the word list 
+ - type 4 to add a word to the list 
+ - will propmts the user to enter a word and if it doesn't exists already in there it will add it to the word list
+ - type 5 to exit 
+ - after each game played and lost the game will ask for the user name and it will add it to the leaderboard with its score
 
 
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
