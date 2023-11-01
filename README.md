@@ -12,33 +12,21 @@
 - Use some form of Error Handling .
 - Organize Your Code into modules & (or packages)
 
-## Example Project :  An online Grocery Store :
+## Project :  An online Escape Room:
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview : An online escape room is a type of puzzle game that is played online. Players are typically locked in a virtual room and must solve a series of puzzles in order to escape. 
 
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
-
+#### As a player you should be able to do the following : 
+- You have the option to select any room you desire
+- Playing once for each room.
+- Only answer on 4 or 3 Questions for each room
+- Appear 4 stories for each room
+- You have the option to play again or exit 
+- Display info about Q&A
 
 
 #### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+- 
 
 
 ### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
