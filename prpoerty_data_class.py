@@ -77,7 +77,7 @@ class PropertyData:
     def set_phone(self,phone_number):
         if self.__phone_number is not None:
             if type(phone_number) is not int :
-                raise ValueError(Fore.RED+"please only integer or float value!!"+Style.RESET_ALL)
+                raise ValueError(Fore.RED+"please only integer  value!!"+Style.RESET_ALL)
             
             self.__phone_number=phone_number  
     def get_phone(self):

@@ -86,57 +86,77 @@ def get_property_details():
 def update_property_details(property_data):
     
     while True:
-        print(Fore.LIGHTBLUE_EX)
-        print(Back.LIGHTBLACK_EX)
-        tprint("Enter your choice  (1-8) To Update",font="cybermedum")
-        menu_items = [
-            ["1.", "Ubdate Rent"],
-            ["2.", "Ubdate Occupancy"],
-            ["3.", "Update Pay"],
-            ["4.", "Update Start date"],
-            ["5.", "Update End date"],
-            ["6.", "Ubdate Tenant Phone Number"],
-            ["7.", "Ubdate Tenant Name"],
-            ["8.", "Exit"]
-            
-        ]
-        table = tabulate(menu_items, headers=["Option", "Menu Item"], tablefmt="fancy_grid")
-        print(table)
-        choice=input("Enter your choice (1-8): ")
-        if choice == "1":
-            price = input("do price:")
-            property_data["rent_ber_month"]= price
-            
-            
-        elif choice == "2":
-            occupancy = input("Enter pay update onle (Empty) or (Not Empty):")
-            property_data["occupancy"]= occupancy
-            
-        elif choice == "3":
-            pay = input("Enter occupancy update onle (Pay) or (Not Pay) or (): ")
-            property_data["pay"]= pay
-               
-        elif choice == "4":
-            start_date = input("Enter update start date in the following (dd-mm-yyyy): ")
-            property_data["start_date"]= start_date
-             
-        elif choice == "5":
-            end_date = input("Enter update end date in the following (dd-mm-yyyy): ")
-            property_data["end_date"]= end_date
-            
-        elif choice == "6":
-            phone = input("Enter update tenant phone number: ")
-            property_data["phone_number"]= phone
-            
-        elif choice == "7":
-            name = input("Enter update tenant name: ")
-            property_data["tenant_name"]= name
-  
-        elif choice == "8":
-            tprint("Update Done!!",font="block-medium")
-            break        
-        else:
-            print(Fore.RED+"Error Choice"+Style.RESET_ALL)
+        try:
+            print(Fore.LIGHTBLUE_EX)
+            print(Back.LIGHTBLACK_EX)
+            tprint("Enter your choice  (1-8) To Update",font="cybermedum")
+            menu_items = [
+                ["1.", "Ubdate Rent"],
+                ["2.", "Ubdate Occupancy"],
+                ["3.", "Update Pay"],
+                ["4.", "Update Start date"],
+                ["5.", "Update End date"],
+                ["6.", "Ubdate Tenant Phone Number"],
+                ["7.", "Ubdate Tenant Name"],
+                ["8.", "Exit"]
+                
+            ]
+            table = tabulate(menu_items, headers=["Option", "Menu Item"], tablefmt="fancy_grid")
+            print(table)
+            choice=input("Enter your choice (1-8): ")
+            if choice == "1":
+                price = int(input("do price:"))
+                property_data["rent_ber_month"]= price
+                property_data["rent_ber_year"] = price*12
+                
+                
+            elif choice == "2":
+                occupancy = input("Enter occupancy update onle (Empty) or (Not Empty): ")
+                if occupancy.lower() != "empty" and occupancy.lower() != "not empty" :
+                    raise Exception(Fore.RED+"please just Empty or Not Empty!!"+Style.RESET_ALL)
+                    
+                else:
+                    property_data["occupancy"]= occupancy
+                
+            elif choice == "3":
+                pay = input("Enter occupancy update onle (Pay) or (Not Pay) or (): ")
+                if pay.lower() != "pay" and pay.lower() != "not pay" and pay.lower() != "":
+                    raise Exception(Fore.RED+"please only Pay or Not Pay!!"+Style.RESET_ALL)
+                else:
+                    property_data["pay"]= pay
+                
+            elif choice == "4":
+                start_date = input("Enter update start date in the following (dd-mm-yyyy): ")
+                
+                date_obj = datetime.strptime(start_date,"%d-%m-%Y")
+                format_date = date_obj.strftime("%d-%m-%Y")
+                property_data["start_date"]= format_date
+                
+                
+            elif choice == "5":
+                end_date = input("Enter update end date in the following (dd-mm-yyyy): ")
+                
+                date_obj = datetime.strptime(end_date, "%d-%m-%Y")
+                format_date = date_obj.strftime("%d-%m-%Y")
+                property_data["end_date"] = format_date
+                
+                
+                
+            elif choice == "6":
+                phone = int(input("Enter update tenant phone number:+966"))
+                property_data["phone_number"]= phone
+                
+            elif choice == "7":
+                name = input("Enter update tenant name: ")
+                property_data["tenant_name"]= name
+    
+            elif choice == "8":
+                tprint("Update Done!!",font="block-medium")
+                break        
+            else:
+                print(Fore.RED+"Error Choice"+Style.RESET_ALL)
+        except Exception as e:
+            print(Fore.RED+e+Style.RESET_ALL)
     return property_data
 def get_property_id():
     return int(input("Enter Property ID: "))
