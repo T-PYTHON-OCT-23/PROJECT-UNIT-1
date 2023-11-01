@@ -18,9 +18,9 @@
 
 # As a customer I should be able to do the following :
 - Login.
-- Register 
-- Add a book to the library (including: book title - author name - publication - ISBN number - quantity)
-- Book account (display books reserved from users - borrowing list - return list - with timing and date)..
+- Register.
+- Add a book to the library (including: book title - author name - publication - ISBN number - quantity).
+- Book account (display books reserved from users - borrowing list - return list - with timing and date).
 - Users (Add new user - Delete - Search - Update information - Display).
 - Books (add - delete - update - search - display all books and information) .
 - Borrowing and returning books.
@@ -29,13 +29,15 @@
 - Exit.
 
 # Usage :
- Steps to use the library system. 
- User:
+ - Steps to use the library system. 
+ - User.
  - The user registers and then logs in.
  - Then it moves to the library management system.
- - A menu will appear to add the user who enters (first name - last name > when adding a number to the name, a message “Invalid character used in the name” appears)..
- - Then register email - contact. When you enter less than 10 numbers, the message “Invalid contact number” will appear - you will be asked if you are a “student, employee” . 
+ - A menu will appear to add the user who enters (first name - last name > when adding a number to the name.  
+ - a  message “Invalid character used in the name” appears)..
+ - Then register email - contact. When you enter less than 10 numbers, the message “Invalid contact number” .  
+ - will appear - you will be asked if you are a “student, employee” . 
  - user added successfully.
- - He can request a book to borrow and return books
+ - He can request a book to borrow and return books.
 
 ### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
