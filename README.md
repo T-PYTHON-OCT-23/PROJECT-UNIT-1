@@ -1,44 +1,25 @@
 # PROJECT-UNIT-1
 
 
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
+### Padel court evaluation
 
-- Must be interactive on CLI.
-- Use lists or dictionaries or tuples. 
-- Use loops.
-- Use functions that return an output . 
-- Use a Lambda function.
-- Use at least 1 Class.
-- Use some form of Error Handling .
-- Organize Your Code into modules & (or packages)
+The program focuses on providing a user to finding and rating padel courts in different cities. I have designed a program that allows users to explore padel courts, leave ratings, and comments
 
-## Example Project :  An online Grocery Store :
+I use tow classes 
+ 1- Padel_Court class that contain the attribute of padels and mithods
+    - firs method :court_info (information about a Padel court)
+        This function prints details about a Padel court, including its city, name, the number of courts available,
+        whether it offers facilities for women, and its rating.
+    - scand method : search (Search for Padel courts in a specific city)
+            This function searches for Padel courts in the given city within the provided court data.
+            It returns a list of matching courts.
+            If no matching courts are found, it raises an Exception.
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+2- Court_Rating class that contain the attribute of (raring , new rating and comment)  and mithods
+    - firs method : add_rating
+       This method allows you to add a new rating to the Court_Rating object
+    - scand method : add_comment 
+       This method allows you to add a comment to the Court_Rating object.
 
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+I use colorama and art modules to desgin ghe output
 
-
-
-#### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
-
-
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
