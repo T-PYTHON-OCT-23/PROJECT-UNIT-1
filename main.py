@@ -79,14 +79,14 @@ while True:
 			print(Style.RESET_ALL)
 
 			product.request(choise)
-			print(Fore.GREEN + "thank you dear \n Your order will be prepared immediately \n If you do not want to add more products, press E ")
+			print(Fore.GREEN + "thank you dear \n Your order will be prepared immediately \n If you do not want to add more products, press E \n")
 
 			
 		elif choise == "2":
 			print(Style.RESET_ALL)
 
 			product.request( choise)
-			print(Fore.GREEN + "thank you dear \n Your order will be prepared immediately \n If you do not want to add more products, press E ")
+			print(Fore.GREEN + "thank you dear \n Your order will be prepared immediately \n If you do not want to add more products, press E \n")
 
 		elif choise == "3":
 			display1 = product.display(choise)
@@ -94,14 +94,14 @@ while True:
 			print(" \n Your price is 25.RS :) ")
 
 
-		elif choise == "E":
+		elif choise.lower() == "e":
 			break
 		
 	#	else:
 		#	print(Style.RESET_ALL)
 		#	raise Exception (Fore.RED + "Please choise 1 or 2 \n 1 to checken burger \n 2 to meet burger ")
-		elif choise == "V":
-			v = input("How was the service from 1 to 5, where 1 was completely satisfied and 5 was not satisfied at all?")
+		elif choise.lower() == "v":
+			v = input("How was the service from 1 to 5, where 1 was completely satisfied and 5 was not satisfied at all? \n ")
 			V = lambda v: print("We are happy for you, dear customer, and we wish you a nice day" , v)
 			print(V(v))
 
@@ -109,7 +109,7 @@ while True:
 	except ValueError: 
 		print(Fore.RED + "Invalid input. Please enter a valid integer.") 
 	except Exception as e :
-		print(Fore.RED + e)
+		print(e)
 
 		
 
