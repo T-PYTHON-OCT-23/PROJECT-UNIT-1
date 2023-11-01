@@ -63,6 +63,7 @@ def purchase_spare_parts():
         if brand in spare_parts and part in spare_parts[brand]:
             total_cost += spare_parts[brand][part]
             sales.append((brand, part, spare_parts[brand][part]))
+            input("any thing")
         else:
             print(f"Invalid spare part: {part}")
     return total_cost
