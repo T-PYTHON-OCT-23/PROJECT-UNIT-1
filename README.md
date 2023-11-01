@@ -3,42 +3,42 @@
 
 ## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
 
-- Must be interactive on CLI.
-- Use lists or dictionaries or tuples. 
-- Use loops.
-- Use functions that return an output . 
+- Must be interactive on CLI.           D
+- Use lists or dictionaries or tuples.  D
+- Use loops.                            D
+- Use functions that return an output.  D 
 - Use a Lambda function.
-- Use at least 1 Class.
-- Use some form of Error Handling .
-- Organize Your Code into modules & (or packages)
+- Use at least 1 Class.                 D
+- Use some form of Error Handling .     D
+- Organize Your Code into modules & (or packages) D
 
-## Example Project :  An online Grocery Store :
+***********************************************************************************************************************
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
-
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
-
-
+## My Project Is A "Coffee Machine":
+ that sells coffee. The machine contains four types of coffee: "latte"," black coffee", "cappuccino", and "tea". 
+ We have a coffee distributor and the user:
+ As a coffee distributor, I display the menu to the user 
+ As a user, I must be able to choose the type of coffee and pay.
+ 
+ ## Project includes:
+ ** one class "DispenserCoffe" -> represents a product dispenser. It has the following methods:
+   -  get_no_of_items  -> This method returns the current number of items left in the dispenser>
+   -  get_cost         -> This method returns the cost of the products 
+   -  make_sale        -> This method is called when a sale is made, reducing the number of items in the dispenser by 1.
+   -  sell_produc      -> This function handles the process of selling a product. 
 
 #### Usage :
- Explain to the user how to use your project . 
- for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+ Explain to the user how to use your project:
+
+ - Choose the type of coffee you want:  
+     - A message will appear with the cost of the coffee. 
+     - You are asked to  enter the cost for product.
+     - If it is less, you will be asked to complete the amount. 
+     - If it is higher than the cost of the product, a message will appear to you that includes the rest
+        for you and do you want to complete and take your drink or recover the full amount and try again 
+     - if the amount is equal For the cost of the product it will show you your drink .
+
+*******************************************************************************************************************
 
 
 ### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
