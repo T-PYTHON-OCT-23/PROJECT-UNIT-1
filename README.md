@@ -20,15 +20,15 @@
  for example:
  - type in CLI
  - First run the 'main.py'
- - Then if you are new here enter '1', and follow the requirement 'name,email,password'
+ - Then if you are new here enter number '1', and follow the requirement 'name,email,password'
  - Next step add your 'email and password' to login to the system.
  - Now enter number '1' to list the places we avaliable in.
- - Try at '4', Then enter 'exit' and now you back to main menue.
+ - Try to enter number '4', Then enter 'exit' and now you back to main menue.
  - Now enter number '2' to list the history and paid the trips.
- - Enter '1', should appear to you last trips you take and its status.
- - Enter '2', should appear to you the 'total cost' you must pay and trips name 'from to'
+ - Enter number '1', should appear to you last trips you take and its status.
+ - Enter number '2', should appear to you the 'total cost' you must pay and trips name 'from to'
  - Enter 'y', should appear to you that you have 'successfully paid your trip', and 0 total cost
- -  You can check if you paid it or not by enter '1', and should appear to you trips 'name', 'cost' and 'status: PAYED'
- - Now you can go back and add other trip if you want by enter '3' 
- - If you want to add other trip use '1' and do step you did previously, if you want to exit the application '3'
+ -  You can check if you paid it or not by enter number '1', and should appear to you trips 'name', 'cost' and 'status: PAYED'
+ - Now you can go back and add other trip if you want by enter number '3' 
+ - If you want to add other trip enter number '1' and do step you did previously, if you want to exit the application enter number'3'
  - 
