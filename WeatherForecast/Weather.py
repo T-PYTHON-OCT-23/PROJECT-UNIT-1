@@ -52,7 +52,9 @@ def search_weather_forecast(location):
             'weather_icon':weather_icon,
             'temperature':temperature
         }
-        if item['City'] not in history_search:
+
+        found_city =  list(filter(lambda history: history['City'] == item['City'], history_search))
+        if len(found_city) == 0:
             history_search.append(item)
             with open("history_search.json", "w", encoding="utf-8") as file:
                 content = json.dumps(history_search)
