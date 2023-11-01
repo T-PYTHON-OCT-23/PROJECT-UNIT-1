@@ -92,7 +92,7 @@ room3_puzzles = [
 ]
 
 room4_puzzles = [
-    Puzzle("\033[33mPeople buy me to eat but never eat me?\033[0m\nHint:You put the food on it", "Plate"),
+    Puzzle("\033[33mWhat is the value of 101110 ?\033[0m\nHint: Crack the code", "46"),
     Puzzle("\033[33mI go around and in the house but never touches the house. What am I?\033[0m\nHint : You can see it only in the morning","Sun"),
     Puzzle("\033[33mWhat is the name of the most famous space exploration agency?\033[0m\nHint:Start with letter N.", "NASA"),
 ]
@@ -147,7 +147,7 @@ def display_the_menu():
     while True:
         print("-*-"*30)
         print("Do you want to play again?")
-        user_choice = input("-Type \033[34m1\033[0m for Yes\n-Type \033[36m2\033[0m Display information about Q&A\n-Type \033[35m3\033[0m for exit\n Choose an option:")
+        user_choice = input("-Type \033[34m1\033[0m for Yes\n-Type \033[36m2\033[0m for display information about Q&A\n-Type \033[35m3\033[0m for exit\n Choose an option:")
         if user_choice == '1':
             start_the_program()
         elif user_choice == "2":

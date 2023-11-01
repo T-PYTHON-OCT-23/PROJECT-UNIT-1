@@ -1,5 +1,5 @@
 import playsound
-#Note: If the sound is not working for you, this module can be used
+#Note: Use this Module if the sound is not working for you
 #Play the sound when user answer correct 
 def play_correct_answer_sound():
     try:
