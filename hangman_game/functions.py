@@ -1,7 +1,7 @@
 import json
 import random
-from drawings import drawings
-from words import *
+from drawings_file import drawings
+from words_file import *
 from tabulate import *
 class hangman:
     
@@ -94,11 +94,14 @@ class hangman:
             leaderboard.append([index+1,i["username"],i["score"]])
         print(tabulate(leaderboard,headers=["Rank","Name","Score"],tablefmt="fancy_grid",numalign="center",stralign="center"))
     
-    def add_word(self,word):
-        append_word(word)
-        
-    def list_words():
-        print(words)
+    def append_word(self,word):
+        words.append(word)
+        with open('words_file.json', 'w') as file:
+            file.write(f"words= {words}")
+
+    def list_words(self):
+        for i in words:
+            print(f"{i}")
     
     def play(self):
         self.score=0
@@ -118,5 +121,4 @@ class hangman:
                 print(self.username,"your score is:",self.score)
                 self.add_to_leaderboard(self.username,self.score)
                 print("added to the leaderboard")
-
                 break
