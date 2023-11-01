@@ -1,44 +1,34 @@
 # PROJECT-UNIT-1
 
+## Example Project : Cycle Ride Service:
 
-## Based on what you’ve learned until now , create a project of your choosing (impress us with your imagination) . This project must at least satisfy the following minimum requirements :
-
-- Must be interactive on CLI.
-- Use lists or dictionaries or tuples. 
-- Use loops.
-- Use functions that return an output . 
-- Use a Lambda function.
-- Use at least 1 Class.
-- Use some form of Error Handling .
-- Organize Your Code into modules & (or packages)
-
-## Example Project :  An online Grocery Store :
-
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview : The "Cycle Ride Service" is a command-line interface (CLI) application that allows users to book and manage bicycle rides. It serves as a platform where users can register, log in, view available rides, book a ride, view ride history, and pay for their rides. The application also offers users the option to check their payment history and track the delivery status of their booked rides. . 
 
 #### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+- As a new user, I can register by providing my full name, email, and password.
+- As a registered user, I can log in using my email and password.
+- I can view the list of available bicycle rides with details like starting and ending locations, and the cost of the ride.
+- I can book a ride by selecting from the available rides.
+- I can view my past ride history, including details about the rides I have taken. .
+- I can view the cost of each ride I've taken and pay for them.
+- I can view my payment history to check which rides I have paid for..  
 
 
 
 #### Usage :
  Explain to the user how to use your project . 
  for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
-
-
-### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 
+ - type in CLI
+ - First run the 'main.py'
+ - Then if you are new here enter '1', and follow the requirement 'name,email,password'
+ - Next step add your 'email and password' to login to the system.
+ - Now enter number '1' to list the places we avaliable in.
+ - Try at '4', Then enter 'exit' and now you back to main menue.
+ - Now enter number '2' to list the history and paid the trips.
+ - Enter '1', should appear to you last trips you take and its status.
+ - Enter '2', should appear to you the 'total cost' you must pay and trips name 'from to'
+ - Enter 'y', should appear to you that you have 'successfully paid your trip', and 0 total cost
+ -  You can check if you paid it or not by enter '1', and should appear to you trips 'name', 'cost' and 'status: PAYED'
+ - Now you can go back and add other trip if you want by enter '3' 
+ - If you want to add other trip use '1' and do step you did previously, if you want to exit the application '3'
+ - 

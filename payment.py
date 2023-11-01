@@ -5,5 +5,5 @@ class Payment:
     
     def is_it_payed(self,cost):
         self.is_paid -= cost
-        print(self.is_paid)
+        print(f"Total cost is {self.is_paid}")
         return True
