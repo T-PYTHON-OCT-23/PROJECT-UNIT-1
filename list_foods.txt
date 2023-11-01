@@ -1,0 +1,18 @@
+Falafel $ 35.50
+Burger $ 50.40
+Tabouleh $ 45.80
+Pizza $ 50.60
+Baklava $ 45.50
+Moutabal $ 37.30
+Fattoush $ 51.80
+Umm Ali $ 35.90
+Dolma $ 43.50
+Kofta $ 37.50
+French Fries $ 32.20
+Hummus $ 30.20
+Manakeesh $ 35.60
+Grilled halloumi $ 40.50
+Knafeh $ 32.95
+Shawarma $ 35.20
+Shish tawook $ 39.50
+
