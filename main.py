@@ -48,7 +48,7 @@ while True:
 
 #--------------------------------------- سناك --------------------------------------
 
-snacks = [snack1, snack2,snack3]
+snacks = [snack1, snack2, snack3,snack4,snack5,snack6,snack7]
 snacks_order = []
 
 
