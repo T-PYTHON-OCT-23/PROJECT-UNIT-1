@@ -30,9 +30,18 @@ def sell_product(product):
                 money += money2
 
             if money == product.get_cost():
-                product.make_sale()
-                print(Fore.BLUE + "Please take your drink" + Style.RESET_ALL)
-          
+                print("you want add sugar : ")
+                print(Fore.BLUE +"(1) Yes"+Style.RESET_ALL)
+                print(Fore.RED + "(2) No"+Style.RESET_ALL)
+                cho = int(input())
+                if cho == 1:
+                    product.make_sale()
+                    print(Fore.BLUE +"Please take your drink"+Style.RESET_ALL)
+                else:
+                    print(Fore.BLUE +"Please take your drink ,"+Style.RESET_ALL)
+                #product.make_sale()
+                #print(Fore.BLUE + "Please take your drink" + Style.RESET_ALL)
+                
             elif money > product.get_cost():
                 print(f"You have remaining of { money - product.get_cost()} Riyals for you to use!")
                 print(Back.GREEN +"Do you want to continue?" + Style.RESET_ALL)
@@ -41,10 +50,18 @@ def sell_product(product):
                 in_more = int(input())
 
                 if in_more == 1:
-                    product.make_sale()
-                    print(Fore.BLUE +"Please take your drink"+Style.RESET_ALL)
+                    print("you want add sugar : ")
+                    print(Fore.BLUE +"(1) Yes"+Style.RESET_ALL)
+                    print(Fore.RED + "(2) No"+Style.RESET_ALL)
+                    cho = int(input())
+                    if cho == 1:
+                        product.make_sale()
+                        print(Fore.BLUE +"Please take your drink"+Style.RESET_ALL)
+                    else:
+                        print(Fore.BLUE +"Please take your drink ,"+Style.RESET_ALL)
                 else:
                     print(Fore.RED ,f"Please take back {money} Riyals"+Style.RESET_ALL)
+                
     except ValueError as e:
         print(Fore.RED ,"We only accept riyals , try again "+Style.RESET_ALL)
     except Exception as e:
