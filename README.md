@@ -12,33 +12,30 @@
 - Use some form of Error Handling .
 - Organize Your Code into modules & (or packages)
 
-## Example Project :  An online Grocery Store :
+## Project :  Community interested in plants :
 
-#### Overview : An online store that sells fruits to customers. This online store has 2 main users. The customer and the manager of the store . Each one of them should be able to do the following tasks for the store to function properly . 
+#### Overview :A community whose members interact with each other by sharing information about plants and presenting problems they have encountered with plants, and members suggest solutions to the problems , With an increase in the member’s points if he interacts in the community.
 
-#### As a customer I should be able to do the following :
-- Browse  Products . 
-- View the product info (summary, specs, price, quantity , etc.)
-- Search for Products.
-- Get recommendations for my next purchase based on my purchase history.
-- Add Products to the shopping cart .
-- Remove a product from the shopping cart.
-- List the products in my shopping cart. 
-- Continue to checkout . 
-- Fill in my address for delivery.
-- Get receipt of my purchases.
-- Check delivery status . 
+#### As a member of this community I must be able to:
+- Create a special account to increase my points by participating in the community
+- Presentation of a plant and information about it
+- Reviewing the plants shared by community members
+- I can ask about a problem I faced with a particular plant
+- I can review the problems, suggest a solution to the problems that community members faced with their plants
 
 
 
 #### Usage :
  Explain to the user how to use your project . 
  for example:
- - type in search product_name to search for a product.
- - type in list_products to show all the products in the grocery.
- - type in show product_name to get information about this product.
- - type in buy product_name to buy the product . 
- - and so on...
+ - type in sing_in to register a new account.
+ - type in log_in to log in.
+ - type in recording_plant_info To enter basic information about the plant and additional general information.
+ - type in display_plants review plants recorded by community members . 
+ - type in problem_faced To ask about a problem you have encountered with a particular plant .
+ - type in solve_problem to review the problems faced by community members and suggest solutions.
+ - type in show_registered_users Reviewing accounts, names, emails, and points .
+ - main class to run the program .
 
 
 ### For your project. Edit this README.md file to include your own project name,  overview, user stories, and usage. 

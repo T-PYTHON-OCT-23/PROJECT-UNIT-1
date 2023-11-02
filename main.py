@@ -68,7 +68,7 @@ while True:
         elif int(choice) == 4:
             classes.solve_problem(email)
         elif int(choice) == 5 :
-            classes.show_registered_users()
+            classes.show_registered_users(email)
         elif int(choice) == 6:
             print(Style.DIM+Thanks)
             break

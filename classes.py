@@ -45,6 +45,8 @@ def sing_in() :
     with open("clint.json", "w", encoding="utf-8") as file:
         content = json.dumps(clints)
         file.write(content)
+    print(Fore.GREEN +"\nYou are successfully registered, just log in")
+    
 
 
 def log_in():
@@ -316,7 +318,9 @@ def solve_problem(email = None):
 
 
 
-def show_registered_users():
+def show_registered_users(email = None):
+    if email != "oudy@gmail.com":
+        return print(Fore.RED +"Sorry, only Admin can see this information\n") , input(Fore.LIGHTBLACK_EX +"--- Press any key to continue ---") ,print(Style.RESET_ALL)
     with open("clint.json") as fp:
         mytable = from_json(fp.read())
         t = mytable.get_string()
@@ -324,7 +328,7 @@ def show_registered_users():
         
     not_interacting = list(filter(lambda clint: clint["points"] == 0, clints ))
     print("Non-interactive members : ")
-    for n in range(0,len(not_interacting)):
+    for n in range(1,len(not_interacting)):
         if n == len(not_interacting)-1 :
             print(not_interacting[n]["name"])
             break
