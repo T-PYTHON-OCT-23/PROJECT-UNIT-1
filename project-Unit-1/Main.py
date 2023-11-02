@@ -13,7 +13,7 @@ nutrition_data = {
 }
 
 print(Fore.YELLOW, "Welcome to our Calories Calculator!")
-tprint("**Calories Calculator**")
+tprint("**calories"), tprint (" calculator**")
 print(Style.RESET_ALL)
 calorie_calculator = CalorieCalculator(nutrition_data)
 
@@ -43,6 +43,10 @@ while True:
         print("Error: Please enter a valid numeric value for quantity.")
     except ZeroDivisionError:
         print("Error: There is no nutritional data for the components.")
+    except Exception as e:
+              print(e)
+
+print(Fore.BLUE,"Thank you for using the Calorie Calculator program. Come back again soon.")
 
 print(Fore.BLUE, "Thank you for using the Calories Calculator program. Come back again soon.")
 print(Style.RESET_ALL)

@@ -55,3 +55,8 @@ Meal: chicken, Quantity: 200.0g, Total Calories: 670.0 calories
 Meal: lentil soup, Quantity: 100.0g, Total Calories: 786.0 calories
 Meal: lentil soup, Quantity: 8.0g, Total Calories: 9.28 calories
 Meal: lentil soup, Quantity: 10.0g, Total Calories: 11.6 calories
+Meal: chicken, Quantity: 20.0g, Total Calories: 67.0 calories
+Meal: rice, Quantity: 40.0g, Total Calories: 119.0 calories
+Meal: lentil soup, Quantity: 50.0g, Total Calories: 129.0 calories
+Meal: ckichen, Quantity: 2.0g, Total Calories: 129.0 calories
+Meal: rice, Quantity: 10.0g, Total Calories: 90.0 calories
