@@ -164,12 +164,15 @@ def get_property_id():
 def search_properties():
     search_criteria = input("Enter search term: ")
     return search_criteria
+
+    
 def main():
     property_manager = PropertyManager("property_data.json")
     print(Fore.LIGHTBLUE_EX)
     print(Back.LIGHTBLACK_EX)
     display_menu()
     while True:
+       
         print(Fore.LIGHTBLUE_EX)
         print(Back.LIGHTBLACK_EX)
         tprint("Enter your choice (1-8): ",font="cybermedum")
