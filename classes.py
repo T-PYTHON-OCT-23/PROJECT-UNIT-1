@@ -23,34 +23,38 @@ def sing_in() :
     password = input("Enter your password : ")
     
     for n in range(0 , len(clints)):
-        print(json.dumps(clints[n]["email"]))
         if str(email) ==  str(json.dumps(clints[n]["email"])):
             return print("Your email address is already registered, just log in") 
     
-    add_clint = Clint(name,email,password)
-    clint ={
-        "name":add_clint.get_name(),
-        "email":add_clint.get_email(),
-        "password":add_clint.get_password(),
-        "points": 0
-    }
+    try:
+        add_clint = Clint(name,email,password)
+        add_clint.set_name(name)
+        add_clint.set_email(email)
+        add_clint.set_password(password)
+        
+        clint ={
+            "name":add_clint.get_name(),
+            "email":add_clint.get_email(),
+            "password":add_clint.get_password(),
+            "points": 0
+        }
+    except Exception as e:
+        print(e)
     clints.append(clint)
     
     with open("clint.json", "w", encoding="utf-8") as file:
         content = json.dumps(clints)
         file.write(content)
 
-sing_in() 
 
 def log_in():
     email = input("Enter your email : ")
     password = input("Enter your password : ")
     for n in range(0 , len(clints)):
-        print(json.dumps(clints[n]["email"]))
-        print(type(json.dumps(clints[n]["email"])))
-        if str(email) ==  str(json.dumps(clints[n]["email"])):
-            return print("i found it ") 
-    print(Fore.RED +"sorry, can not found")
+        if email ==  (clints[n]["email"]) and password ==  (clints[n]["password"]):
+            print(Fore.GREEN +"\nYou have been logged in successfully ")
+            return email
+    raise Exception(Fore.RED +"The email or password is incorrect , please log in if you do not already have an account")
 
 
 plant_info=[]
@@ -61,7 +65,7 @@ try:
 except:
     pass
 
-def recording_plant_info():
+def recording_plant_info(email = None):
     plant_name= input("Enter the name of the plant: ")
     choice1 = """
     Choose the plant variety (choose a number):
@@ -148,6 +152,9 @@ def recording_plant_info():
     }
     
     plant_info.append(plant)
+    for n in range(0 , len(clints)):
+        if clints[n]["email"] == email  :
+            clints[n]["points"] = clints[n]["points"] +1
     
     print(Fore.GREEN +"\nThank you, the information has been added successfully")
     input(Fore.LIGHTBLACK_EX +"--- Press any key to continue ---")
@@ -156,7 +163,9 @@ def recording_plant_info():
     with open("plants.json", "w", encoding="utf-8") as file:
         content = json.dumps(plant_info)
         file.write(content)
-        
+    with open("clint.json", "w", encoding="utf-8") as file:
+        content = json.dumps(clints)
+        file.write(content)  
 
 def display_plants():
     with open("plants.json") as fp:
@@ -272,7 +281,7 @@ def problem_faced():
         
 
      
-def solve_problem():
+def solve_problem(email = None):
     print("The problems")
     with open("problems_faced.json") as fp:
         mytable = from_json(fp.read())
@@ -284,8 +293,8 @@ def solve_problem():
         raise Exception(Fore.RED +"please choose a number of problem ")
     
         
-    for n in range(0 , (len(problems_faced))+1):
-        if n == (len(problems_faced))+1:
+    for n in range(0 , len(problems_faced)):
+        if n == len(problems_faced):
             print(f"Sorry, problem number {num_of_problem} does not exist ")
         if problems_faced[n]["number of problem"] == num_of_problem:
             suggested_solution = input("Suggest a solution to this problem : ")
@@ -294,6 +303,13 @@ def solve_problem():
                 content = json.dumps(problems_faced)
                 file.write(content)
             break
+    for n in range(0 , len(clints)):
+        if clints[n]["email"] == email  :
+            clints[n]["points"] = clints[n]["points"] +2
+            
+    with open("clint.json", "w", encoding="utf-8") as file:
+        content = json.dumps(clints)
+        file.write(content)
     print(Fore.GREEN +"Thank you, your suggestion has been added to solve the problem successfully")
     input(Fore.LIGHTBLACK_EX +"--- Press any key to continue ---")
     print(Style.RESET_ALL)
@@ -305,8 +321,19 @@ def show_registered_users():
         mytable = from_json(fp.read())
         t = mytable.get_string()
         print(t)
+        
+    not_interacting = list(filter(lambda clint: clint["points"] == 0, clints ))
+    print("Non-interactive members : ")
+    for n in range(0,len(not_interacting)):
+        if n == len(not_interacting)-1 :
+            print(not_interacting[n]["name"])
+            break
+        print(not_interacting[n]["name"] , end=" , ")
+
+
     input(Fore.LIGHTBLACK_EX +"--- Press any key to continue ---")
     print(Style.RESET_ALL)
+
 
 
 #print(hashlib.md5(add_clint.get_email().encode()))

@@ -11,19 +11,27 @@ class Clint:
         
     def set_name(self, name:str):
         if type(name) != str:
-            Exception(Fore.RED +"The name must consist of letters")
+            raise Exception(Fore.RED +"The name must consist of letters")
         elif len(name) <= 4:
-            Exception(Fore.RED +"Please enter a name that is four or more characters long")
+            raise Exception(Fore.RED +"Please enter a name that is four or more characters long")
         elif type(name[0]) != str:
-            Exception(Fore.RED +"The first letter must not be a number or symbol")
+            raise Exception(Fore.RED +"The first letter must not be a number or symbol")
         self.__name = name
         
     def get_name(self):
         return self.__name
     
     def set_email(self, email:str):
-        if email.endswith("@gmail.com") and len(email) > 12 and email.count("@") == 1 and email.count(" ") == 0:
-            raise Exception(Fore.RED +"The email must not contain spaces and end with @gmail.com")
+        if not email.endswith("@gmail.com") :
+            raise Exception(Fore.RED +"The email must end with @gmail.com")
+        elif not len(email) > 12:
+            raise Exception(Fore.RED +"The email must contain more than 12 characters")
+        elif not email.count("@") == 1:
+            raise Exception(Fore.RED +"The email must contain @")
+        elif not email.count(" ") == 0 :
+             raise Exception(Fore.RED +"The email must not contain spaces")
+        
+            
         self.__email = email
         
     def get_email(self):
@@ -32,8 +40,6 @@ class Clint:
     def set_password(self, password:str):
         if len(password) <= 4 :
             raise Exception(Fore.RED +"The password must be more than four")
-        elif (not password in str or int) :
-            raise Exception(Fore.RED +"The password must contain letters and numbers")
             
         self.__password = password
         
