@@ -39,9 +39,7 @@ def sell_product(product):
                     print(Fore.BLUE +"Please take your drink"+Style.RESET_ALL)
                 else:
                     print(Fore.BLUE +"Please take your drink ,"+Style.RESET_ALL)
-                #product.make_sale()
-                #print(Fore.BLUE + "Please take your drink" + Style.RESET_ALL)
-                
+                    
             elif money > product.get_cost():
                 print(f"You have remaining of { money - product.get_cost()} Riyals for you to use!")
                 print(Back.GREEN +"Do you want to continue?" + Style.RESET_ALL)
