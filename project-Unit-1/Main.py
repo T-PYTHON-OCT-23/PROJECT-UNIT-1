@@ -13,7 +13,8 @@ nutrition_data = {
 }
 
 print(Fore.YELLOW, "Welcome to our Calories Calculator!")
-tprint("**calories"), tprint (" calculator**")
+tprint("**calories")
+tprint("calculator**")
 print(Style.RESET_ALL)
 calorie_calculator = CalorieCalculator(nutrition_data)
 
@@ -47,8 +48,6 @@ while True:
               print(e)
 
 print(Fore.BLUE,"Thank you for using the Calorie Calculator program. Come back again soon.")
-
-print(Fore.BLUE, "Thank you for using the Calories Calculator program. Come back again soon.")
 print(Style.RESET_ALL)
 
 

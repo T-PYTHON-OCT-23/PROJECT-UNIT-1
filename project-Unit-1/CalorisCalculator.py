@@ -1,4 +1,8 @@
-from colorama import Fore , Style , Back
+
+from colorama import Fore, Style
+from art import *
+
+
 class CalorieCalculator:
     def __init__(self, nutrition_data):
         self.nutrition_data = nutrition_data

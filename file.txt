@@ -60,3 +60,16 @@ Meal: rice, Quantity: 40.0g, Total Calories: 119.0 calories
 Meal: lentil soup, Quantity: 50.0g, Total Calories: 129.0 calories
 Meal: ckichen, Quantity: 2.0g, Total Calories: 129.0 calories
 Meal: rice, Quantity: 10.0g, Total Calories: 90.0 calories
+Meal: meat, Quantity: 200.0g, Total Calories: 432.0 calories
+Meal: rice, Quantity: 300.0g, Total Calories: 822.0 calories
+Meal: bread, Quantity: 100.0g, Total Calories: 844.0 calories
+Meal: soup, Quantity: 230.0g, Total Calories: 844.0 calories
+Meal: soup, Quantity: 100.0g, Total Calories: 847.0 calories
+Meal: soup, Quantity: 10.0g, Total Calories: 1.0 calories
+Meal: soup, Quantity: 20.0g, Total Calories: 2.0 calories
+Meal: chicken, Quantity: 20.0g, Total Calories: 2.0 calories
+Meal: chicken, Quantity: 100.0g, Total Calories: 2.0 calories
+Meal: soup, Quantity: 100.0g, Total Calories: 10.0 calories
+Meal: chicken, Quantity: 10.0g, Total Calories: 10.0 calories
+Meal: soup, Quantity: 20.0g, Total Calories: 0 calories
+Meal: chicken, Quantity: 300.0g, Total Calories: 1005.0 calories
