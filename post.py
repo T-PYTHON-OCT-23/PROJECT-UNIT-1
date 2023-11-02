@@ -1,4 +1,4 @@
-from db import addThread  , addThreadCategory , addCategory , get_all_categories
+from db import addThread  , addCategory , get_all_categories
 from mongo import removeThread , addToMongo , CreateCategories , getAllCategories , addToCommentsMongo , removeCommentMongo
 class Thread:
     def __init__(self, title, content,category, author):
@@ -15,7 +15,6 @@ class Thread:
         self.comments = []
         self.category = category
         self.ThreadId=addThread(title,category,author)
-        addThreadCategory(category, self.ThreadId)
         category = catgory(category)
         category.add_thread(self)
         addToMongo(self.ThreadId, title, content,category, author)
