@@ -24,7 +24,7 @@ class EscapeRoom:
         try:
             print(f"Q-{self.current_puzzle.get_puzzle()}")
         except Exception as e:
-            print(e)
+            print("You finished all the rooms!n\Press on Enter to Exit")
             input()
 
         answer = input("Answer: ")
