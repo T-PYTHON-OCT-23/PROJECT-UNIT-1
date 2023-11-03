@@ -27,144 +27,144 @@
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "noura",
-            "cost": 15,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "almasif",
-            "to": "noura",
-            "cost": 15,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "Aldryiah",
-            "to": "kfu",
-            "cost": 10,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "Aldryiah",
-            "to": "kfu",
-            "cost": 10,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "almasif",
-            "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "noura",
-            "cost": 15,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "almasif",
-            "to": "noura",
-            "cost": 15,
-            "is_payed": "Not payed it yet"
-        }
-    },
-    {
-        "Hazal@gmail.com": {
-            "from": "almasif",
-            "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "Aldryiah",
             "to": "kfu",
-            "cost": 10,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "Aldryiah",
+            "to": "kfu",
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "almasif",
+            "to": "noura",
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "almasif",
+            "to": "noura",
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "Aldryiah",
+            "to": "kfu",
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "almasif",
+            "to": "kfu",
+            "cost": 0,
+            "is_payed": "PAYED"
+        }
+    },
+    {
+        "Hazal@gmail.com": {
+            "from": "almasif",
+            "to": "kfu",
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "Aldryiah",
             "to": "noura",
-            "cost": 50,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "Aldryiah",
             "to": "noura",
-            "cost": 50,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
         "Hazal@gmail.com": {
             "from": "almasif",
             "to": "kfu",
-            "cost": 30,
-            "is_payed": "Not payed it yet"
+            "cost": 0,
+            "is_payed": "PAYED"
         }
     },
     {
@@ -237,6 +237,30 @@
             "to": "kfu",
             "cost": 0,
             "is_payed": "PAYED"
+        }
+    },
+    {
+        "H@gmail.com": {
+            "from": "almasif",
+            "to": "noura",
+            "cost": 15,
+            "is_payed": "Not payed it yet"
+        }
+    },
+    {
+        "H@gmail.com": {
+            "from": "almasif",
+            "to": "kfu",
+            "cost": 30,
+            "is_payed": "Not payed it yet"
+        }
+    },
+    {
+        "H@gmail.com": {
+            "from": "Aldryiah",
+            "to": "kfu",
+            "cost": 10,
+            "is_payed": "Not payed it yet"
         }
     }
 ]

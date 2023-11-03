@@ -161,7 +161,7 @@ def print_trip_duration(trips_duration:dict) -> print:
             {idx+3}- From Aldryiah to {n['Aldryiah']['noura']['to']}, it will cost you {n['Aldryiah']['noura']['cost']}
             {idx+4}- From Aldryiah to {n['Aldryiah']['kfu']['to']}, it will cost you {n['Aldryiah']['kfu']['cost']}
                             ''')
-        print("Enter '404' to exit the application.")
+    print("Enter '404' to exit the application.")
 
 def print_info() -> print:
     print(''' 

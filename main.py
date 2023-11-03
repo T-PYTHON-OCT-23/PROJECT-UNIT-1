@@ -10,7 +10,7 @@ trips_duration = []
 try:
     users = read_user()
     history_trips = read_history()
-    trips_duration = read_trip
+    trips_duration = read_trip()
 except Exception as e:
     print(e)
 
