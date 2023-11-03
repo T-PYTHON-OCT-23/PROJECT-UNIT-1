@@ -4,6 +4,7 @@ from colorama import Fore, Back, Style,init
 init(autoreset=True)
 
 user_name =""
+user_points =0
 intro = """
 Choose a number :
 1 ) For sing in .
@@ -23,6 +24,7 @@ while True:
             for n in range(0 , len(classes.clints)):
                 if classes.clints[n]["email"] == email  :
                     user_name = classes.clints[n]["name"]
+                    user_points = classes.clints[n]["points"]
             break
         
         elif int(choice_for_log_in) == 3 :
@@ -51,14 +53,14 @@ Choose a number :  """
 
 
 Welcome=text2art(f"           Welcome   {user_name}\nto the   plant   community")
-Thanks=text2art("    Thanks   for   visiting  \n    see    you   later.")
+Thanks=text2art(f"Thanks  for visiting\n   your  points  {user_points}\n    see    you   later.")
 print(Style.DIM+Welcome)
 while True:
     
     choice = input(the_list)
     try:
         if not choice.isnumeric() :
-            raise print("Please enter the number of one of the available options")
+            raise Exception("Please enter the number of one of the available options")
         if int(choice) == 1:
             classes.recording_plant_info(email)
         elif int(choice) == 2 :
